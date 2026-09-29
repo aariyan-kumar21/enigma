@@ -70,19 +70,6 @@ export function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 xl:gap-16 items-center">
           {/* ================= LEFT COLUMN (~55%) ================= */}
           <div className="lg:col-span-7 flex flex-col justify-center space-y-6 sm:space-y-7">
-            {/* Eyebrow */}
-            <motion.div
-              custom={0}
-              initial="hidden"
-              animate="visible"
-              variants={fadeUpVariant}
-              className="flex items-center gap-2"
-            >
-              <span className="font-mono text-xs sm:text-sm font-medium uppercase tracking-[0.25em] text-zinc-400">
-                — {site.hero.eyebrow}
-              </span>
-            </motion.div>
-
             {/* Massive Editorial Headline */}
             <h1 className="font-display font-extrabold tracking-tight text-white flex flex-col leading-[0.88] select-none">
               <span className="overflow-hidden block py-1">
