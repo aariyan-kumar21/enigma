@@ -42,21 +42,6 @@ export function About() {
         }}
       />
 
-      {/* Huge Outlined ENIGMA Watermark at bottom-left */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-8 sm:-bottom-12 -left-6 z-0 select-none overflow-hidden"
-      >
-        <span
-          className="font-accent italic font-normal text-[22vw] sm:text-[18vw] lg:text-[16vw] text-transparent leading-none tracking-tighter whitespace-nowrap opacity-25 block"
-          style={{
-            WebkitTextStroke: "1.5px var(--violet-500)",
-          }}
-        >
-          {site.brand.name}
-        </span>
-      </div>
-
       {/* Main Container */}
       <div className="relative z-10 max-w-[1440px] mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-16 items-start">
