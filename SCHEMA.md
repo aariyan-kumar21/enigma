@@ -12,7 +12,7 @@ The site is static. There is no database. The "schema" is the **typed content mo
 ## 1. Types (`src/content/types.ts`)
 
 ```ts
-export type NavId = "home" | "about" | "missions" | "operatives" | "secure";
+export type NavId = "home" | "about" | "events" | "operatives" | "secure";
 
 export interface NavItem {
   id: NavId;          // matches the <section id="...">
@@ -67,13 +67,14 @@ export interface About {
   pillars: Pillar[];    // exactly 4
 }
 
-export interface Mission {
+export interface EventItem {
   id: string;
   title: string;
-  date?: string;
-  category?: string;
-  description: string;
-  image?: string;
+  type: string;            // e.g. "WORKSHOP"
+  date: string;            // display string, e.g. "12 MAR 2025"
+  venue?: string;
+  image?: string;          // path under /events/
+  status?: "upcoming" | "past";
   link?: Link;
 }
 
@@ -117,7 +118,7 @@ export interface SiteContent {
   nav: NavItem[];
   hero: Hero;
   about: About;
-  missions: { eyebrow?: string; headline: { plain: string; accent: string }; items: Mission[] };
+  events: { eyebrow: string; headline: { plain: string; accent: string }; items: EventItem[] };
   operatives: { eyebrow?: string; headline: { plain: string; accent: string }; items: Operative[] };
   secure: SecureCon;
   footer: Footer;
@@ -152,7 +153,7 @@ export const site: SiteContent = {
   nav: [
     { id: "home", label: "HOME.EXE" },
     { id: "about", label: "ABOUT.LOG" },
-    { id: "missions", label: "MISSIONS.ARC" },
+    { id: "events", label: "EVENTS.ARC" },
     { id: "operatives", label: "OPERATIVES.LST" },
     { id: "secure", label: "SECURE.CON" },
   ],
@@ -205,9 +206,38 @@ export const site: SiteContent = {
     ],
   },
 
-  missions: {
-    headline: { plain: "MISSIONS", accent: "ARC" }, // TODO: confirm heading from live site
-    items: [], // TODO: content not provided
+  events: {
+    eyebrow: "EVENTS.ARC",
+    headline: { plain: "OUR", accent: "EVENTS." },
+    items: [
+      {
+        id: "race-for-roles",
+        title: "the RACE FOR ROLES",
+        type: "Auditions 2026",
+        date: "September 29, 2026",
+        venue: "212",
+        image: "/events/the-race-for-roles.jpg",
+        status: "upcoming",
+      },
+      {
+        id: "jains-got-latent",
+        title: "JAIN’S GOT LATENT",
+        type: "Event",
+        date: "April 28, 2026",
+        venue: "002",
+        image: "/events/jains-got-latent.jpg",
+        status: "past",
+      },
+      {
+        id: "blind-date",
+        title: "BLIND DATE",
+        type: "Event",
+        date: "March 17, 2026",
+        venue: "002",
+        image: "/events/blind-date.jpg",
+        status: "past",
+      },
+    ],
   },
 
   operatives: {
@@ -234,7 +264,7 @@ export const site: SiteContent = {
 | `Header` | `brand`, `meta`, `nav` |
 | `Hero` | `hero`, `meta.vId` |
 | `About` | `about` |
-| `Missions` | `missions` |
+| `Events` | `events` |
 | `Operatives` | `operatives` |
 | `SecureCon` | `secure` |
 | `Footer` | `footer`, `brand`, `secure.socials` |
@@ -244,20 +274,20 @@ export const site: SiteContent = {
 - `about.pillars.length === 4`, exactly one has `highlighted: true`.
 - Every `nav[].id` must have a matching `<section id>` in the page.
 - Any `href` equal to `"TODO"` must render a disabled button style and log a dev-only console warning.
-- Empty arrays (`missions.items`, `operatives.items`) render a tasteful "coming soon" card, never a blank gap.
+- Empty arrays (`events.items`, `operatives.items`) render a tasteful "coming soon" card, never a blank gap.
 
 ## 5. Suggested Folder Structure
 
 ```
 enigma-site/
-├─ public/            logo.svg, og.png, favicon
+├─ public/            logo.svg, og.png, favicon, events/
 ├─ src/
 │  ├─ content/        types.ts, site.ts
 │  ├─ components/
 │  │  ├─ layout/      Header.tsx, MobileMenu.tsx, Footer.tsx, HelpButton.tsx
-│  │  ├─ sections/    Hero.tsx, About.tsx, Missions.tsx, Operatives.tsx, SecureCon.tsx
-│  │  └─ ui/          Button.tsx, Pill.tsx, SectionTitle.tsx, Reveal.tsx, DragCursor.tsx
-│  ├─ hooks/          useActiveSection.ts, useLiveClock.ts, useReducedMotion.ts
+│  │  ├─ sections/    Hero.tsx, About.tsx, Events.tsx, Operatives.tsx, SecureCon.tsx
+│  │  └─ ui/          Button.tsx, Pill.tsx, SectionTitle.tsx, Reveal.tsx, DragCursor.tsx, EventCard.tsx, CarouselControls.tsx
+│  ├─ hooks/          useActiveSection.ts, useLiveClock.ts, useReducedMotion.ts, useDragScroll.ts
 │  ├─ styles/         globals.css (tokens as CSS variables)
 │  ├─ App.tsx
 │  └─ main.tsx

@@ -1,4 +1,4 @@
-export type NavId = "home" | "about" | "missions" | "operatives" | "secure";
+export type NavId = "home" | "about" | "events" | "operatives" | "secure";
 
 export interface NavItem {
   id: NavId;          // matches the <section id="...">
@@ -53,13 +53,14 @@ export interface About {
   pillars: Pillar[];    // exactly 4
 }
 
-export interface Mission {
+export interface EventItem {
   id: string;
   title: string;
-  date?: string;
-  category?: string;
-  description: string;
-  image?: string;
+  type: string;            // e.g. "WORKSHOP"
+  date: string;            // display string, e.g. "12 MAR 2025"
+  venue?: string;
+  image?: string;          // path under /events/
+  status?: "upcoming" | "past";
   link?: Link;
 }
 
@@ -67,21 +68,31 @@ export interface Operative {
   id: string;
   name: string;
   role: string;
+  description?: string;
   photo?: string;
   socials?: SocialLink[];
   group?: "core" | "lead" | "member";
+}
+
+export interface ContactChannel {
+  title: string;
+  value: string;
+  href: string;
+  type: "email" | "phone" | "location";
 }
 
 export interface SecureCon {
   eyebrow?: string;
   headline: { plain: string; accent: string };
   description?: string;
+  channels: ContactChannel[];
   socials: SocialLink[];
   contactEmail?: string;
   form?: { enabled: boolean; action?: string };
 }
 
 export interface Footer {
+  tagline: string;
   copyright: string;
   links: Link[];
 }
@@ -103,8 +114,8 @@ export interface SiteContent {
   nav: NavItem[];
   hero: Hero;
   about: About;
-  missions: { eyebrow?: string; headline: { plain: string; accent: string }; items: Mission[] };
-  operatives: { eyebrow?: string; headline: { plain: string; accent: string }; items: Operative[] };
+  events: { eyebrow: string; headline: { plain: string; accent: string }; items: EventItem[] };
+  operatives: { eyebrow: string; headline: { plain: string; accent: string }; description?: string; items: Operative[] };
   secure: SecureCon;
   footer: Footer;
 }

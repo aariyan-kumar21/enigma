@@ -7,19 +7,19 @@ export const site: SiteContent = {
       "ENIGMA is a student-led tech club dedicated to fostering innovation, collaboration, and technical excellence among passionate students.",
     ogTitle: "ENIGMA - Student Tech Club",
     ogDescription: "Unraveling the mysteries of technology, innovation, and creativity",
-    ogImage: "/og.png",             // TODO: replace with final image on the new domain
+    ogImage: "/og.png",
     twitterHandle: "@ENIGMA",
     author: "ENIGMA Club",
   },
 
-  brand: { name: "ENIGMA", suffix: "z", tag: "SECTOR.ALPHA", logoSrc: "/logo.svg" }, // TODO: logo file
+  brand: { name: "ENIGMA", suffix: "z", tag: "SECTOR.ALPHA", logoSrc: "/logo.svg" },
 
   meta: { lat: "12.6381° N", long: "77.4406° E", timezone: "Asia/Kolkata", vId: "0x88F2A" },
 
   nav: [
     { id: "home", label: "HOME.EXE" },
     { id: "about", label: "ABOUT.LOG" },
-    { id: "missions", label: "MISSIONS.ARC" },
+    { id: "events", label: "EVENTS.ARC" },
     { id: "operatives", label: "OPERATIVES.LST" },
     { id: "secure", label: "SECURE.CON" },
   ],
@@ -30,7 +30,7 @@ export const site: SiteContent = {
     paragraph:
       "We are a collective of developers, designers, and innovators unraveling the mysteries of technology through creative destruction.",
     primaryCta: { label: "ACCESS SOCIALS", href: "#secure" },
-    secondaryCta: { label: "JOIN NETWORK", href: "TODO" }, // TODO: join link
+    secondaryCta: { label: "JOIN NETWORK", href: "https://chat.whatsapp.com/KUe221OJGsd63Hs5grwUMS" },
   },
 
   about: {
@@ -72,21 +72,209 @@ export const site: SiteContent = {
     ],
   },
 
-  missions: {
-    headline: { plain: "MISSIONS", accent: "ARC" }, // TODO: confirm heading from live site
-    items: [], // TODO: content not provided
+  events: {
+    eyebrow: "EVENTS.ARC",
+    headline: { plain: "OUR", accent: "EVENTS." },
+    items: [
+      {
+        id: "race-for-roles",
+        title: "the RACE FOR ROLES",
+        type: "Auditions 2026",
+        date: "September 29, 2026",
+        venue: "212",
+        image: "/events/the-race-for-roles.jpg",
+        status: "upcoming",
+      },
+      {
+        id: "jains-got-latent",
+        title: "JAIN’S GOT LATENT",
+        type: "Event",
+        date: "April 28, 2026",
+        venue: "002",
+        image: "/events/jains-got-latent.jpg",
+        status: "past",
+      },
+      {
+        id: "blind-date",
+        title: "BLIND DATE",
+        type: "Event",
+        date: "March 17, 2026",
+        venue: "002",
+        image: "/events/blind-date.jpg",
+        status: "past",
+      },
+    ],
   },
 
   operatives: {
-    headline: { plain: "OPERATIVES", accent: "LST" }, // TODO: confirm heading from live site
-    items: [], // TODO: content not provided
+    eyebrow: "SECTOR.ROSTER",
+    headline: { plain: "THE", accent: "OPERATIVES." },
+    description: "CORE UNIT RESPONSIBLE FOR TECHNICAL REBELLION AND DEPLOYMENT OF INNOVATIVE SOLUTIONS.",
+    items: [
+      {
+        id: "yamuna-sharma",
+        name: "Yamuna Sharma D",
+        role: "Lead",
+        description: "Always drawn to art and creativity, i love finding stories in colors, design and the little details that often go unnoticed",
+        photo: "/leads/lead.jpeg",
+        group: "lead",
+        socials: [
+          { platform: "email", label: "Email", href: "mailto:yamusharma529@gmail.com" },
+          { platform: "linkedin", label: "LinkedIn", href: "http://linkedin.com/in/yamuna-sharma-192a2029b", external: true },
+          { platform: "github", label: "GitHub", href: "https://github.com/yamunasharma24", external: true },
+        ],
+      },
+      {
+        id: "kshitij-sharma",
+        name: "Kshitij Sharma",
+        role: "Co-Lead",
+        description: "A curious jack of all trades who loves learning, building, and exploring new skills across domains.",
+        photo: "/leads/colead.jpg",
+        group: "lead",
+        socials: [
+          { platform: "email", label: "Email", href: "mailto:kshitijsharma.765@gmail.com" },
+          { platform: "linkedin", label: "LinkedIn", href: "https://linkedin.com/in/kshitijjj", external: true },
+          { platform: "github", label: "GitHub", href: "https://github.com/kshxiscool", external: true },
+        ],
+      },
+      {
+        id: "krishal-karna",
+        name: "Krishal Karna",
+        role: "Technical Lead",
+        description: "Turning data into decisions — one model at a time.",
+        photo: "/leads/tech.jpeg",
+        group: "core",
+        socials: [
+          { platform: "email", label: "Email", href: "mailto:karnakreeshal@gmail.com" },
+          { platform: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/in/krishalkarna/", external: true },
+          { platform: "github", label: "GitHub", href: "https://github.com/kreeshal17", external: true },
+        ],
+      },
+      {
+        id: "shaili-srivastava",
+        name: "Shaili Srivastava",
+        role: "Operation Lead",
+        description: "Passionate about technology and problem-solving. I love building efficient systems, optimizing workflows, and constantly learning new stuff to stay ahead.",
+        photo: "/leads/operation.jpeg",
+        group: "core",
+        socials: [
+          { platform: "email", label: "Email", href: "mailto:23btrcn026@jainuniversity.ac.in" },
+          { platform: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/in/shaili-srivastava0908/", external: true },
+          { platform: "github", label: "GitHub", href: "https://github.com/ShailiSrivastava", external: true },
+        ],
+      },
+      {
+        id: "aakash-agarwal",
+        name: "Aakash Agarwal",
+        role: "Resource Lead",
+        description: "Passionate technologist solving real-world challenges",
+        photo: "/leads/resource.jpeg",
+        group: "core",
+        socials: [
+          { platform: "email", label: "Email", href: "mailto:aakashrkl603@gmail.com" },
+          { platform: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/in/aakashagarwal1609/", external: true },
+          { platform: "github", label: "GitHub", href: "https://github.com/AaKaShAgArWaLs", external: true },
+        ],
+      },
+      {
+        id: "ayadee-aphiwatamorn",
+        name: "Ayadee Aphiwatamorn",
+        role: "Creative Lead",
+        description: "Creativity isn’t just what i do…it’s how i see the world. i love turning ideas into something visual, meaningful and uniquely mine",
+        photo: "/leads/creative.jpeg",
+        group: "core",
+        socials: [
+          { platform: "email", label: "Email", href: "mailto:ayadee.aphiwatamorn@gmail.com" },
+          { platform: "linkedin", label: "LinkedIn", href: "http://linkedin.com/in/ayadee-aphiwatamorn1878", external: true },
+          { platform: "github", label: "GitHub", href: "https://github.com/AyadeeAphiwatamorn", external: true },
+        ],
+      },
+      {
+        id: "suyog-lal-shrestha",
+        name: "Suyog Lal Shrestha",
+        role: "Photography Lead",
+        description: "Eager and enthusiastic about exploring new things.",
+        photo: "/leads/photography.jpeg",
+        group: "core",
+        socials: [
+          { platform: "email", label: "Email", href: "mailto:sathyac2004@gmail.com" },
+          { platform: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/in/", external: true },
+          { platform: "github", label: "GitHub", href: "https://github.com/", external: true },
+        ],
+      },
+      {
+        id: "sworaj-khadka",
+        name: "Sworaj Khadka",
+        role: "Social Media Lead",
+        description: "Crafting our digital presence and keeping the community engaged one post at a time.",
+        photo: "/leads/social.jpg",
+        group: "core",
+        socials: [
+          { platform: "email", label: "Email", href: "mailto:sworajkhadka21@gmail.com" },
+          { platform: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/in/sworaj-khadka-071a20349", external: true },
+          { platform: "github", label: "GitHub", href: "https://github.com/SworajKhadka", external: true },
+        ],
+      },
+    ],
   },
 
   secure: {
-    headline: { plain: "SECURE", accent: "CON" }, // TODO: confirm heading from live site
-    socials: [], // TODO: social links
+    eyebrow: "SECTOR.COMMUNICATIONS",
+    headline: { plain: "SECURE", accent: "UPLINK." },
+    description: "Establish a direct connection for technical inquiries or collaboration requests.",
+    channels: [
+      {
+        title: "UPLINK.EMAIL",
+        value: "enigmaclub5@gmail.com",
+        href: "mailto:enigmaclub5@gmail.com",
+        type: "email",
+      },
+      {
+        title: "COMMS.DIRECT",
+        value: "+91 96967 24664",
+        href: "tel:+919696724664",
+        type: "phone",
+      },
+      {
+        title: "BASE.LOC",
+        value: "JCVR+27P, Karnataka 562112",
+        href: "https://www.google.com/maps/search/?api=1&query=12.638143296188357,77.44063386876661",
+        type: "location",
+      },
+    ],
+    socials: [
+      {
+        platform: "instagram",
+        label: "Instagram",
+        href: "https://www.instagram.com/ju_enigma/?hl=en",
+        external: true,
+      },
+      {
+        platform: "whatsapp",
+        label: "WhatsApp",
+        href: "https://chat.whatsapp.com/KUe221OJGsd63Hs5grwUMS",
+        external: true,
+      },
+      {
+        platform: "linkedin",
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/company/enigma-club-ju/posts/?feedView=all",
+        external: true,
+      },
+    ],
+    contactEmail: "enigmaclub5@gmail.com",
     form: { enabled: false },
   },
 
-  footer: { copyright: "TODO", links: [] },
+  footer: {
+    tagline: "Sector.Alpha // Student-led collective dedicated to technical rebellion and innovative deployment.",
+    copyright: "© 2026 // ENIGMA_COLLECTIVE // ALL_MISSIONS_RESERVED",
+    links: [
+      { label: "HOME.EXE", href: "#home" },
+      { label: "ABOUT.LOG", href: "#about" },
+      { label: "EVENTS.ARC", href: "#events" },
+      { label: "OPERATIVES.LST", href: "#operatives" },
+      { label: "SECURE.CON", href: "#secure" },
+    ],
+  },
 };

@@ -57,7 +57,7 @@ Nav labels are kept exactly as they are today.
 ### 6.1 Global header (fixed)
 - Logo mark + wordmark **ENIGMA** (small "z" subscript as in current logo) + tag **SECTOR.ALPHA**.
 - Centre/left meta strip (reference shows city + time): `LAT: 12.6381° N · LONG: 77.4406° E` plus live local time (IST). These coordinates come from the current site.
-- Nav: `HOME.EXE` · `ABOUT.LOG` · `MISSIONS.ARC` · `OPERATIVES.LST` · `SECURE.CON`
+- Nav: `HOME.EXE` · `ABOUT.LOG` · `EVENTS.ARC` · `OPERATIVES.LST` · `SECURE.CON`
 - Mobile: "Menu" pill opens a full-screen overlay.
 - Active link highlights based on scroll position.
 - Small floating help button (bottom-right) exists on the current site; keep as a round `?` button, restyled (opens a small popover — content TBD, see §9).
@@ -82,10 +82,11 @@ Nav labels are kept exactly as they are today.
   4. **MISSION.LOG** (highlighted card, filled electric blue) — "To empower students with the knowledge and community needed to excel in technical innovation."
 - Layout idea: heading + lead on the left, 2×2 rounded card grid on the right; on hover each card lifts and its icon inverts.
 
-### 6.4 MISSIONS.ARC — Missions
-**Content: NOT PROVIDED YET.** Layout candidates (decide once content arrives):
-- A) Horizontal drag carousel of large rounded cards (reference "Featured Works").
-- B) Big-type hover list (reference "Services").
+### 6.4 EVENTS.ARC — Events
+- Horizontal drag carousel of large rounded cards (reference "Featured Works").
+- Eyebrow: **EVENTS.ARC**
+- Headline: **OUR *EVENTS.***
+- Events: "the RACE FOR ROLES" (Auditions 2026), "JAIN’S GOT LATENT" (Event), "BLIND DATE" (Event).
 
 ### 6.5 OPERATIVES.LST — Team
 **Content: NOT PROVIDED YET.** Layout: grid of rounded cards with circular avatar, name, role, and social icons. Optional "founders" strip with overlapping avatars as in the reference hero panel.
@@ -115,7 +116,7 @@ Nav labels are kept exactly as they are today.
 - Semantic HTML: one `<h1>`, sections with `id` matching nav anchors, visible focus states, AA colour contrast.
 
 ## 9. Open Questions (need answers before those sections are built)
-1. Text/screenshots for **MISSIONS.ARC**, **OPERATIVES.LST**, **SECURE.CON**, and the footer.
+1. Text/screenshots for **OPERATIVES.LST**, **SECURE.CON**, and the footer.
 2. Social links (Instagram, LinkedIn, GitHub, Discord, WhatsApp?) for ACCESS SOCIALS.
 3. Where does **JOIN NETWORK** go (Google Form, WhatsApp group, etc.)?
 4. What does the help `?` button show today?
@@ -129,7 +130,7 @@ Nav labels are kept exactly as they are today.
 | 1 | Header and mobile menu |
 | 2 | Hero (HOME.EXE) |
 | 3 | About panel (ABOUT.LOG) |
-| 4 | Missions (MISSIONS.ARC) |
+| 4 | Events (EVENTS.ARC) |
 | 5 | Operatives (OPERATIVES.LST) |
 | 6 | Secure.con and footer |
 | 7 | Global motion, smooth scroll, help button |
