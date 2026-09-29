@@ -17,11 +17,11 @@ export const site: SiteContent = {
   meta: { lat: "12.6381° N", long: "77.4406° E", timezone: "Asia/Kolkata", vId: "0x88F2A" },
 
   nav: [
-    { id: "home", label: "HOME.EXE" },
-    { id: "about", label: "ABOUT.LOG" },
-    { id: "events", label: "EVENTS.ARC" },
-    { id: "operatives", label: "OPERATIVES.LST" },
-    { id: "secure", label: "SECURE.CON" },
+    { id: "home", label: "HOME" },
+    { id: "about", label: "ABOUT" },
+    { id: "events", label: "EVENTS" },
+    { id: "operatives", label: "OPERATIVES" },
+    { id: "secure", label: "SECURE" },
   ],
 
   hero: {
@@ -270,11 +270,11 @@ export const site: SiteContent = {
     tagline: "Sector.Alpha // Student-led collective dedicated to technical rebellion and innovative deployment.",
     copyright: "© 2026 // ENIGMA_COLLECTIVE // ALL_MISSIONS_RESERVED",
     links: [
-      { label: "HOME.EXE", href: "#home" },
-      { label: "ABOUT.LOG", href: "#about" },
-      { label: "EVENTS.ARC", href: "#events" },
-      { label: "OPERATIVES.LST", href: "#operatives" },
-      { label: "SECURE.CON", href: "#secure" },
+      { label: "HOME", href: "#home" },
+      { label: "ABOUT", href: "#about" },
+      { label: "EVENTS", href: "#events" },
+      { label: "OPERATIVES", href: "#operatives" },
+      { label: "SECURE", href: "#secure" },
     ],
   },
 };

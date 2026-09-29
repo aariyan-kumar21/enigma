@@ -133,19 +133,9 @@ export function MobileMenu({ isOpen, onClose, activeId }: MobileMenuProps) {
                   aria-hidden="true"
                 />
               </div>
-              <div className="flex flex-col">
-                <span className="font-display font-bold text-lg tracking-tight">
-                  {site.brand.name}
-                  {site.brand.suffix && (
-                    <sub className="text-xs text-[var(--yellow-400)] ml-0.5 font-mono">
-                      {site.brand.suffix}
-                    </sub>
-                  )}
-                </span>
-                <span className="text-[10px] font-mono tracking-widest text-[var(--text-faint)] uppercase">
-                  {site.brand.tag}
-                </span>
-              </div>
+              <span className="font-display font-bold text-lg tracking-tight text-white">
+                {site.brand.name}
+              </span>
             </div>
 
             <button
@@ -183,9 +173,6 @@ export function MobileMenu({ isOpen, onClose, activeId }: MobileMenuProps) {
                       </span>
                       <span>{item.label}</span>
                     </span>
-                    {isActive && (
-                      <span className="w-2.5 h-2.5 rounded-full bg-[var(--yellow-400)] shadow-lg shadow-yellow-400/50" />
-                    )}
                   </a>
                 </motion.div>
               );

@@ -58,19 +58,9 @@ export function Header() {
                 aria-hidden="true"
               />
             </div>
-            <div className="flex flex-col">
-              <span className="font-display font-bold text-base sm:text-lg tracking-tight text-white flex items-baseline">
-                {site.brand.name}
-                {site.brand.suffix && (
-                  <sub className="text-xs text-[var(--yellow-400)] font-mono ml-0.5">
-                    {site.brand.suffix}
-                  </sub>
-                )}
-              </span>
-              <span className="text-[9px] font-mono tracking-widest text-[var(--text-faint)] uppercase leading-none">
-                {site.brand.tag}
-              </span>
-            </div>
+            <span className="font-display font-bold text-base sm:text-lg tracking-tight text-white">
+              {site.brand.name}
+            </span>
           </a>
 
           {/* Right: Nav Links (Desktop lg+) */}
@@ -86,18 +76,12 @@ export function Header() {
                   href={`#${item.id}`}
                   onClick={(e) => handleNavClick(e, item.id)}
                   aria-current={isActive ? "page" : undefined}
-                  className={`relative flex items-center gap-1.5 py-1.5 transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-[var(--violet-400)] rounded-md font-mono text-[13px] tracking-wide ${
+                  className={`relative flex items-center py-1.5 transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-[var(--violet-400)] rounded-md font-mono text-[13px] tracking-wide ${
                     isActive
                       ? "text-white font-semibold"
                       : "text-white/60 hover:text-white"
                   }`}
                 >
-                  {isActive && (
-                    <span
-                      aria-hidden="true"
-                      className="w-1.5 h-1.5 rounded-full bg-[var(--yellow-400)] shadow-sm shadow-yellow-400/50"
-                    />
-                  )}
                   <span>{item.label}</span>
                 </a>
               );
@@ -114,7 +98,6 @@ export function Header() {
               aria-label="Open Navigation Menu"
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[var(--line)] bg-white/5 hover:bg-white/10 active:scale-95 transition-all text-xs font-mono font-medium uppercase tracking-wider text-white outline-none focus-visible:ring-2 focus-visible:ring-[var(--violet-400)]"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--yellow-400)]" />
               <span>Menu</span>
             </button>
           </div>
