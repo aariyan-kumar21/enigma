@@ -30,14 +30,6 @@ export function Header() {
     }
   };
 
-  const navLabels: Record<string, string> = {
-    home: "Home",
-    about: "About",
-    events: "Events",
-    operatives: "Operatives",
-    secure: "Secure",
-  };
-
   return (
     <>
       <header
@@ -73,18 +65,17 @@ export function Header() {
           >
             {site.nav.map((item) => {
               const isActive = activeSection === item.id;
-              const label = navLabels[item.id] || item.label;
 
               return (
                 <a
                   key={item.id}
                   href={`#${item.id}`}
                   onClick={(e) => handleNavClick(e, item.id)}
-                  className={`relative py-1 text-[14px] transition-colors duration-200 outline-none font-sans ${
-                    isActive ? "text-white font-medium" : "text-zinc-400 hover:text-white"
+                  className={`relative py-1 text-xs sm:text-[13px] font-mono uppercase tracking-wider transition-colors duration-200 outline-none ${
+                    isActive ? "text-white font-semibold" : "text-zinc-400 hover:text-white"
                   }`}
                 >
-                  <span>{label}</span>
+                  <span>{item.label}</span>
                   {isActive && (
                     <span
                       aria-hidden="true"
