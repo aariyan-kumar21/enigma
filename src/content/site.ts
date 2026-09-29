@@ -20,8 +20,8 @@ export const site: SiteContent = {
     { id: "home", label: "HOME" },
     { id: "about", label: "ABOUT" },
     { id: "events", label: "EVENTS" },
-    { id: "operatives", label: "OPERATIVES" },
-    { id: "secure", label: "SECURE" },
+    { id: "operatives", label: "CORE TEAM" },
+    { id: "secure", label: "CONTACT" },
   ],
 
   hero: {
@@ -254,7 +254,8 @@ export const site: SiteContent = {
       { label: "HOME", href: "#home" },
       { label: "ABOUT", href: "#about" },
       { label: "EVENTS", href: "#events" },
-      { label: "OPERATIVES", href: "#operatives" },
+      { label: "CORE TEAM", href: "#operatives" },
+      { label: "CONTACT", href: "#secure" },
     ],
   },
 };
