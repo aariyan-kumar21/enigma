@@ -147,7 +147,7 @@ export function Hero() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-7 py-3 rounded-full border border-white/20 hover:border-[#9B6DFF] hover:text-[#9B6DFF] bg-transparent text-white text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all duration-300 active:scale-95"
               >
-                <span>JOIN THE COLLECTIVE</span>
+                <span>JOIN COMMUNITY</span>
               </a>
             </motion.div>
           </div>

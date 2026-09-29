@@ -104,7 +104,7 @@ export function Header() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full border border-white/20 hover:border-[#9B6DFF] hover:text-[#9B6DFF] bg-transparent text-white text-xs font-semibold tracking-wider uppercase transition-all duration-200 active:scale-95"
             >
-              <span>JOIN THE COLLECTIVE</span>
+              <span>JOIN COMMUNITY</span>
               <ArrowUpRight className="w-3.5 h-3.5 opacity-80" />
             </a>
           </div>

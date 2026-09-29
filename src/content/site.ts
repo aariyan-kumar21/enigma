@@ -30,7 +30,7 @@ export const site: SiteContent = {
     paragraph:
       "A student-led collective building, experimenting, and deploying ideas that challenge the ordinary and create real-world impact.",
     primaryCta: { label: "Explore Enigma", href: "#about" },
-    secondaryCta: { label: "Join the Collective", href: "https://chat.whatsapp.com/KUe221OJGsd63Hs5grwUMS" },
+    secondaryCta: { label: "Join Community", href: "https://chat.whatsapp.com/KUe221OJGsd63Hs5grwUMS" },
   },
 
   about: {
