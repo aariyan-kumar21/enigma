@@ -15,7 +15,7 @@ export function HelpButton() {
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
           aria-label={isOpen ? "Close help popover" : "Open help popover"}
-          className="w-13 h-13 rounded-full bg-[var(--blue-500)] text-white flex items-center justify-center shadow-2xl shadow-blue-500/30 hover:bg-blue-600 active:scale-95 transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-white border border-white/20"
+          className="w-13 h-13 rounded-full bg-[var(--violet-600)] text-white flex items-center justify-center shadow-2xl shadow-violet-900/40 hover:bg-[var(--violet-500)] active:scale-95 transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-[var(--violet-400)] border border-[var(--line)] cursor-pointer"
         >
           {isOpen ? <X className="w-6 h-6" /> : <HelpCircle className="w-6 h-6" />}
         </button>
@@ -29,23 +29,24 @@ export function HelpButton() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 15, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-22 right-6 z-40 w-80 rounded-[24px] bg-[var(--ink-900)]/95 backdrop-blur-xl border border-white/15 p-6 shadow-2xl text-white select-none"
+            className="fixed bottom-22 right-6 z-40 w-80 rounded-[24px] bg-[var(--ink-900)]/95 backdrop-blur-xl border border-[var(--line)] p-6 shadow-2xl shadow-violet-950/50 text-white select-none"
           >
-            <div className="flex items-center justify-between pb-4 border-b border-white/10">
-              <span className="font-display font-bold text-base tracking-tight">
+            <div className="flex items-center justify-between pb-4 border-b border-[var(--line)]">
+              <span className="font-display font-bold text-base tracking-tight text-[var(--text-primary)]">
                 ENIGMA Support
               </span>
-              <span className="text-[10px] font-mono text-[var(--blue-500)] uppercase tracking-wider">
+              <span className="text-[10px] font-mono text-[var(--yellow-400)] uppercase tracking-wider flex items-center gap-1.5 font-semibold">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--yellow-400)] animate-pulse" />
                 ACTIVE
               </span>
             </div>
 
-            <div className="py-4 space-y-3 font-mono text-xs text-white/70">
+            <div className="py-4 space-y-3 font-mono text-xs text-[var(--text-muted)]">
               <a
                 href="mailto:enigmaclub5@gmail.com"
-                className="flex items-center gap-3 p-2.5 rounded-xl bg-white/5 hover:bg-white/10 transition-colors"
+                className="flex items-center gap-3 p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-[var(--text-primary)] transition-colors"
               >
-                <Mail className="w-4 h-4 text-[var(--blue-500)]" />
+                <Mail className="w-4 h-4 text-[var(--violet-400)]" />
                 <span className="truncate">enigmaclub5@gmail.com</span>
               </a>
 
@@ -53,19 +54,19 @@ export function HelpButton() {
                 href="https://chat.whatsapp.com/KUe221OJGsd63Hs5grwUMS"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 p-2.5 rounded-xl bg-white/5 hover:bg-white/10 transition-colors"
+                className="flex items-center gap-3 p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-[var(--text-primary)] transition-colors"
               >
                 <MessageCircle className="w-4 h-4 text-emerald-400" />
                 <span>Join WhatsApp Group</span>
               </a>
 
-              <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/5 text-white/60">
-                <MapPin className="w-4 h-4 text-[var(--blue-500)]" />
+              <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/5 text-[var(--text-muted)]">
+                <MapPin className="w-4 h-4 text-[var(--violet-400)]" />
                 <span className="truncate">{site.meta.lat} · {site.meta.long}</span>
               </div>
             </div>
 
-            <p className="text-[10px] font-mono text-white/40 text-center pt-1 uppercase tracking-wider">
+            <p className="text-[10px] font-mono text-[var(--text-faint)] text-center pt-1 uppercase tracking-wider">
               {site.brand.tag} // PROTOCOL.HELP
             </p>
           </motion.div>

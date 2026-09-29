@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 export interface PillProps {
   children: ReactNode;
-  variant?: "default" | "blue" | "dark" | "outline" | "glass";
+  variant?: "default" | "violet" | "dark" | "outline" | "glass";
   size?: "sm" | "md";
   icon?: ReactNode;
   className?: string;
@@ -25,10 +25,10 @@ export function Pill({
 
   const variantStyles = {
     default: "bg-white/10 text-white/90 border border-white/10",
-    blue: "bg-[var(--blue-500)]/15 text-[var(--blue-500)] border border-[var(--blue-500)]/30",
-    dark: "bg-[var(--ink-900)] text-white/80 border border-white/10",
-    outline: "bg-transparent text-white/70 border border-white/20",
-    glass: "bg-white/5 backdrop-blur-md text-white/90 border border-white/10",
+    violet: "bg-[var(--violet-500)]/15 text-[var(--violet-400)] border border-[var(--violet-500)]/30",
+    dark: "bg-[var(--ink-800)] text-[var(--text-muted)] border border-[var(--line)]",
+    outline: "bg-transparent text-[var(--text-muted)] border border-[var(--line)]",
+    glass: "bg-white/5 backdrop-blur-md text-white/90 border border-[var(--line)]",
   }[variant];
 
   return (

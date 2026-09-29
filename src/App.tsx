@@ -31,7 +31,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[var(--ink-950)] text-white selection:bg-[var(--blue-500)] selection:text-white relative">
+    <div className="min-h-screen bg-[var(--ink-950)] text-white selection:bg-[var(--violet-500)] selection:text-white relative">
       {/* Global Fixed Header */}
       <Header />
 

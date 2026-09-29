@@ -12,7 +12,7 @@ export const site: SiteContent = {
     author: "ENIGMA Club",
   },
 
-  brand: { name: "ENIGMA", suffix: "z", tag: "SECTOR.ALPHA", logoSrc: "/logo.svg" },
+  brand: { name: "ENIGMA", suffix: "z", tag: "SECTOR.ALPHA", logoSrc: "/enigma-logo.png" },
 
   meta: { lat: "12.6381° N", long: "77.4406° E", timezone: "Asia/Kolkata", vId: "0x88F2A" },
 

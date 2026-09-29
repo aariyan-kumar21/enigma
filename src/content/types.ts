@@ -42,7 +42,7 @@ export interface Pillar {
   title: string;
   description: string;
   icon: "lightbulb" | "users" | "trophy" | "target";
-  highlighted?: boolean; // filled electric-blue card
+  highlighted?: boolean; // filled violet card
 }
 
 export interface About {

@@ -21,16 +21,16 @@ export function SecureCon() {
   return (
     <section
       id={site.nav[4].id}
-      className="relative bg-[var(--ink-950)] text-white py-24 md:py-32 px-6 lg:px-10 scroll-mt-20 border-b border-white/10"
+      className="relative bg-[var(--ink-950)] text-white py-24 md:py-32 px-6 lg:px-10 scroll-mt-20 border-b border-[var(--line)]"
     >
       <div className="max-w-[1440px] mx-auto w-full space-y-16">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-white/10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-[var(--line)]">
           <div className="space-y-4 max-w-2xl">
             <Reveal delay={0.1}>
-              <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-white leading-[0.95]">
+              <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-[var(--text-primary)] leading-[0.95]">
                 <span>{secure.headline.plain} </span>
-                <span className="font-accent italic font-normal tracking-normal text-[var(--blue-500)]">
+                <span className="font-accent italic font-normal tracking-normal text-[var(--violet-400)]">
                   {secure.headline.accent}
                 </span>
               </h2>
@@ -38,7 +38,7 @@ export function SecureCon() {
 
             {secure.description && (
               <Reveal delay={0.2}>
-                <p className="text-sm sm:text-base text-[var(--text-muted-dark)] font-mono uppercase tracking-wider max-w-xl pl-4 border-l-2 border-[var(--blue-500)] mt-2">
+                <p className="text-sm sm:text-base text-[var(--text-muted)] font-mono uppercase tracking-wider max-w-xl pl-4 border-l-2 border-[var(--violet-500)] mt-2">
                   {secure.description}
                 </p>
               </Reveal>
@@ -54,31 +54,31 @@ export function SecureCon() {
                 href={channel.href}
                 target={channel.type === "location" ? "_blank" : undefined}
                 rel={channel.type === "location" ? "noopener noreferrer" : undefined}
-                className="group relative h-full bg-[var(--ink-900)] rounded-[24px] p-8 border border-white/10 hover:border-white/30 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-blue-500/10 select-none outline-none focus-visible:ring-2 focus-visible:ring-[var(--blue-500)]"
+                className="group relative h-full bg-[var(--ink-900)] rounded-[24px] p-8 border border-[var(--line)] hover:border-[var(--violet-500)]/50 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-violet-950/50 select-none outline-none focus-visible:ring-2 focus-visible:ring-[var(--violet-400)]"
               >
                 {/* Channel Header */}
                 <div className="flex items-center justify-between pb-8">
-                  <div className="w-12 h-12 rounded-full bg-[var(--blue-500)] text-white flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shadow-lg shadow-blue-500/25">
+                  <div className="w-12 h-12 rounded-full bg-[var(--violet-600)] text-white flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shadow-lg shadow-violet-600/30">
                     {getChannelIcon(channel.type)}
                   </div>
 
-                  <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
+                  <span className="text-[10px] font-mono text-[var(--text-faint)] uppercase tracking-widest">
                     CHANNEL_0{index + 1}
                   </span>
                 </div>
 
                 {/* Channel Content */}
                 <div className="space-y-3">
-                  <h3 className="font-display font-bold text-xl uppercase tracking-tight text-white group-hover:text-[var(--blue-500)] transition-colors">
+                  <h3 className="font-display font-bold text-xl uppercase tracking-tight text-white group-hover:text-[var(--violet-400)] transition-colors">
                     {channel.title}
                   </h3>
-                  <p className="font-mono text-sm text-[var(--text-muted-dark)] leading-relaxed break-words">
+                  <p className="font-mono text-sm text-[var(--text-muted)] leading-relaxed break-words">
                     {channel.value}
                   </p>
                 </div>
 
                 {/* Hover Connect Indicator */}
-                <div className="pt-6 mt-6 border-t border-white/5 flex items-center justify-between text-xs font-mono text-[var(--blue-500)] uppercase tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">
+                <div className="pt-6 mt-6 border-t border-[var(--line)] flex items-center justify-between text-xs font-mono text-[var(--violet-400)] uppercase tracking-wider opacity-60 group-hover:opacity-100 transition-opacity">
                   <span>Establish Link</span>
                   <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </div>

@@ -28,7 +28,7 @@ export function Events() {
   return (
     <section
       id={site.nav[2].id}
-      className="relative bg-[var(--ink-950)] text-white py-24 md:py-32 overflow-hidden scroll-mt-20 border-b border-white/5"
+      className="relative bg-[var(--ink-950)] text-white py-24 md:py-32 overflow-hidden scroll-mt-20 border-b border-[var(--line)]"
     >
       <div className="max-w-[1440px] mx-auto px-6 lg:px-10">
         {/* Header Row: Eyebrow + Heading + Desktop Controls */}
@@ -37,7 +37,7 @@ export function Events() {
             <Reveal delay={0.1}>
               <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-white leading-[0.95]">
                 <span>{site.events.headline.plain} </span>
-                <span className="font-accent italic font-normal tracking-normal text-[var(--blue-500)]">
+                <span className="font-accent italic font-normal tracking-normal text-[var(--violet-400)]">
                   {site.events.headline.accent}
                 </span>
               </h2>
@@ -81,7 +81,7 @@ export function Events() {
             role="region"
             aria-label="Events carousel"
             {...bind}
-            className="flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory cursor-grab active:cursor-grabbing outline-none focus-visible:ring-2 focus-visible:ring-[var(--blue-500)] pb-4 px-6 lg:px-10 scrollbar-none select-none"
+            className="flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory cursor-grab active:cursor-grabbing outline-none focus-visible:ring-2 focus-visible:ring-[var(--violet-400)] pb-4 px-6 lg:px-10 scrollbar-none select-none"
             style={{
               scrollbarWidth: "none",
               msOverflowStyle: "none",

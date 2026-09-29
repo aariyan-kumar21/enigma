@@ -36,10 +36,10 @@ export function OperativeCard({ operative, index, delay = 0 }: OperativeCardProp
 
   return (
     <Reveal delay={delay} className="h-full">
-      <div className="group h-full bg-[var(--paper)] rounded-[28px] p-6 border border-black/5 hover:border-black/10 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between select-none">
+      <div className="group h-full bg-[var(--ink-900)] rounded-[28px] p-6 border border-[var(--line)] hover:border-[var(--violet-500)]/50 shadow-sm hover:shadow-xl hover:shadow-violet-950/50 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between select-none">
         {/* Top: Portrait Photo */}
         <div>
-          <div className="relative w-full aspect-[4/4.5] rounded-[20px] overflow-hidden bg-[var(--mist)] mb-5 border border-black/5">
+          <div className="relative w-full aspect-[4/4.5] rounded-[20px] overflow-hidden bg-[var(--ink-800)] mb-5 border border-[var(--line)]">
             {operative.photo && !imageFailed ? (
               <img
                 src={operative.photo}
@@ -49,7 +49,7 @@ export function OperativeCard({ operative, index, delay = 0 }: OperativeCardProp
                 className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
               />
             ) : (
-              <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-neutral-100 to-neutral-200 text-neutral-400">
+              <div className="w-full h-full flex flex-col items-center justify-center bg-[var(--ink-800)] text-[var(--text-faint)]">
                 <User className="w-16 h-16 opacity-40 mb-2" />
                 <span className="font-mono text-xs uppercase tracking-widest opacity-60">
                   {formattedOpId}
@@ -64,7 +64,7 @@ export function OperativeCard({ operative, index, delay = 0 }: OperativeCardProp
 
             {/* Top-Right: Lead Badge if applicable */}
             {operative.group === "lead" && (
-              <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-[var(--blue-500)] text-white text-[10px] font-mono font-semibold tracking-wider shadow-sm">
+              <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-[var(--violet-600)] text-white text-[10px] font-mono font-semibold tracking-wider shadow-sm">
                 COMMAND
               </div>
             )}
@@ -72,16 +72,16 @@ export function OperativeCard({ operative, index, delay = 0 }: OperativeCardProp
 
           {/* Info: Role, Name, Bio */}
           <div className="space-y-2">
-            <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[var(--blue-500)] block">
+            <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[var(--violet-400)] block">
               {operative.role}
             </span>
 
-            <h3 className="font-display font-bold text-2xl text-[var(--ink-950)] tracking-tight transition-colors duration-300 group-hover:text-[var(--blue-500)]">
+            <h3 className="font-display font-bold text-2xl text-[var(--text-primary)] tracking-tight transition-colors duration-300 group-hover:text-[var(--violet-400)]">
               {operative.name}
             </h3>
 
             {operative.description && (
-              <p className="text-sm text-neutral-600 leading-relaxed line-clamp-3 pt-1 font-sans min-h-[4rem]">
+              <p className="text-sm text-[var(--text-muted)] leading-relaxed line-clamp-3 pt-1 font-sans min-h-[4rem]">
                 "{operative.description}"
               </p>
             )}
@@ -90,7 +90,7 @@ export function OperativeCard({ operative, index, delay = 0 }: OperativeCardProp
 
         {/* Bottom: Social Transmission Channels */}
         {operative.socials && operative.socials.length > 0 && (
-          <div className="border-t border-black/5 pt-4 mt-5 flex items-center gap-2">
+          <div className="border-t border-[var(--line)] pt-4 mt-5 flex items-center gap-2">
             {operative.socials.map((social) => (
               <a
                 key={social.platform}
@@ -98,7 +98,7 @@ export function OperativeCard({ operative, index, delay = 0 }: OperativeCardProp
                 target={social.external ? "_blank" : undefined}
                 rel={social.external ? "noopener noreferrer" : undefined}
                 aria-label={`${social.label} of ${operative.name}`}
-                className="w-9 h-9 rounded-full bg-[var(--mist)] border border-black/5 flex items-center justify-center text-neutral-600 hover:bg-[var(--blue-500)] hover:text-white hover:border-[var(--blue-500)] transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-[var(--blue-500)] active:scale-95"
+                className="w-9 h-9 rounded-full bg-[var(--ink-800)] border border-[var(--line)] flex items-center justify-center text-[var(--text-muted)] hover:bg-[var(--violet-600)] hover:text-white hover:border-[var(--violet-600)] transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-[var(--violet-400)] active:scale-95"
               >
                 {renderSocialIcon(social.platform)}
               </a>

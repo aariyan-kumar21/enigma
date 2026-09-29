@@ -32,7 +32,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative bg-[var(--ink-950)] text-white pt-24 pb-16 px-6 lg:px-10 border-t border-white/10 overflow-hidden select-none">
+    <footer className="relative bg-[var(--ink-950)] text-white pt-24 pb-16 px-6 lg:px-10 border-t border-[var(--line)] overflow-hidden select-none">
       {/* Huge Background Watermark */}
       <div
         aria-hidden="true"
@@ -47,11 +47,11 @@ export function Footer() {
           {/* Column 1: Brand & Socials (Cols 1-5) */}
           <div className="md:col-span-5 space-y-6">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[var(--blue-500)]/15 border border-[var(--blue-500)]/30 flex items-center justify-center text-[var(--blue-500)]">
+              <div className="w-11 h-11 rounded-xl overflow-hidden flex items-center justify-center shadow-lg shadow-purple-950/60 border border-[var(--line)]">
                 <img
                   src={site.brand.logoSrc}
                   alt=""
-                  className="w-6 h-6 filter brightness-200"
+                  className="w-full h-full object-cover"
                   aria-hidden="true"
                 />
               </div>
@@ -60,7 +60,7 @@ export function Footer() {
               </span>
             </div>
 
-            <p className="font-mono text-xs uppercase tracking-wider text-white/50 leading-relaxed max-w-sm">
+            <p className="font-mono text-xs uppercase tracking-wider text-[var(--text-faint)] leading-relaxed max-w-sm">
               {site.footer.tagline}
             </p>
 
@@ -73,7 +73,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:bg-[var(--blue-500)] hover:text-white hover:border-[var(--blue-500)] transition-all duration-300 hover:-translate-y-0.5 outline-none focus-visible:ring-2 focus-visible:ring-[var(--blue-500)]"
+                  className="w-11 h-11 rounded-full bg-[var(--ink-900)] border border-[var(--line)] flex items-center justify-center text-[var(--text-muted)] hover:bg-[var(--violet-600)] hover:text-white hover:border-[var(--violet-600)] transition-all duration-300 hover:-translate-y-0.5 outline-none focus-visible:ring-2 focus-visible:ring-[var(--violet-400)]"
                 >
                   {renderSocialIcon(social.platform)}
                 </a>
@@ -83,7 +83,7 @@ export function Footer() {
 
           {/* Column 2: Navigation Tree (Cols 6-8) */}
           <div className="md:col-span-3 space-y-6">
-            <span className="text-[10px] font-mono text-[var(--blue-500)] tracking-widest uppercase font-semibold block">
+            <span className="text-[10px] font-mono text-[var(--violet-400)] tracking-widest uppercase font-semibold block">
               Navigation_Tree
             </span>
 
@@ -103,38 +103,38 @@ export function Footer() {
 
           {/* Column 3: Communication Log (Cols 9-12) */}
           <div className="md:col-span-4 space-y-6">
-            <span className="text-[10px] font-mono text-[var(--blue-500)] tracking-widest uppercase font-semibold block">
+            <span className="text-[10px] font-mono text-[var(--violet-400)] tracking-widest uppercase font-semibold block">
               Communication_Log
             </span>
 
-            <ul className="space-y-5 font-mono text-xs uppercase text-white/60">
+            <ul className="space-y-5 font-mono text-xs uppercase text-[var(--text-muted)]">
               <li className="flex flex-col gap-1">
-                <span className="text-white/30 text-[10px] tracking-widest">LOCATION</span>
+                <span className="text-[var(--text-faint)] text-[10px] tracking-widest">LOCATION</span>
                 <a
                   href="https://www.google.com/maps/search/?api=1&query=12.638143296188357,77.44063386876661"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/80 hover:text-[var(--blue-500)] transition-colors"
+                  className="text-white/80 hover:text-[var(--violet-400)] transition-colors"
                 >
                   JCVR+27P, Karnataka 562112
                 </a>
               </li>
 
               <li className="flex flex-col gap-1">
-                <span className="text-white/30 text-[10px] tracking-widest">UPLINK_EMAIL</span>
+                <span className="text-[var(--text-faint)] text-[10px] tracking-widest">UPLINK_EMAIL</span>
                 <a
                   href="mailto:enigmaclub5@gmail.com"
-                  className="text-white/80 hover:text-[var(--blue-500)] transition-colors"
+                  className="text-white/80 hover:text-[var(--violet-400)] transition-colors"
                 >
                   enigmaclub5@gmail.com
                 </a>
               </li>
 
               <li className="flex flex-col gap-1">
-                <span className="text-white/30 text-[10px] tracking-widest">COMMS_LINE</span>
+                <span className="text-[var(--text-faint)] text-[10px] tracking-widest">COMMS_LINE</span>
                 <a
                   href="tel:+919696724664"
-                  className="text-white/80 hover:text-[var(--blue-500)] transition-colors"
+                  className="text-white/80 hover:text-[var(--violet-400)] transition-colors"
                 >
                   +91 96967 24664
                 </a>
@@ -144,8 +144,8 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar: Copyright & Scroll to Top */}
-        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="font-mono text-[11px] tracking-widest text-white/40 uppercase text-center sm:text-left">
+        <div className="pt-8 border-t border-[var(--line)] flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="font-mono text-[11px] tracking-widest text-[var(--text-faint)] uppercase text-center sm:text-left">
             {site.footer.copyright}
           </div>
 
@@ -153,7 +153,7 @@ export function Footer() {
             type="button"
             onClick={scrollToTop}
             aria-label="Scroll to top of page"
-            className="w-12 h-12 rounded-full bg-white/5 border border-white/15 hover:bg-[var(--blue-500)] hover:border-[var(--blue-500)] text-white flex items-center justify-center transition-all duration-300 hover:-translate-y-1 active:scale-95 outline-none focus-visible:ring-2 focus-visible:ring-[var(--blue-500)] shadow-lg"
+            className="w-12 h-12 rounded-full bg-[var(--ink-900)] border border-[var(--line)] hover:bg-[var(--violet-600)] hover:border-[var(--violet-600)] text-white flex items-center justify-center transition-all duration-300 hover:-translate-y-1 active:scale-95 outline-none focus-visible:ring-2 focus-visible:ring-[var(--violet-400)] shadow-lg cursor-pointer"
           >
             <ArrowUp className="w-5 h-5" />
           </button>

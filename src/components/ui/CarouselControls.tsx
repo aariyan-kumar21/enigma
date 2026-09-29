@@ -38,7 +38,7 @@ export function CarouselControls({
           </span>
           <div className="relative flex-1 h-[2px] bg-white/15 rounded-full overflow-hidden">
             <div
-              className="absolute top-0 bottom-0 left-0 bg-[var(--blue-500)] transition-all duration-200 ease-out"
+              className="absolute top-0 bottom-0 left-0 bg-[var(--violet-500)] transition-all duration-200 ease-out"
               style={{ width: `${Math.max(15, scrollProgress * 100)}%` }}
             />
           </div>
@@ -53,7 +53,7 @@ export function CarouselControls({
             onClick={onPrev}
             disabled={!canScrollLeft}
             aria-label="Previous events"
-            className="w-12 h-12 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-white transition-all duration-300 hover:bg-white hover:text-[var(--ink-950)] hover:border-white disabled:opacity-30 disabled:pointer-events-none outline-none focus-visible:ring-2 focus-visible:ring-[var(--blue-500)] active:scale-95"
+            className="w-12 h-12 rounded-full border border-[var(--line)] bg-white/5 flex items-center justify-center text-white transition-all duration-300 hover:bg-white hover:text-[var(--ink-950)] hover:border-white disabled:opacity-30 disabled:pointer-events-none outline-none focus-visible:ring-2 focus-visible:ring-[var(--violet-400)] active:scale-95 cursor-pointer"
           >
             <ArrowLeft className="w-5 h-5" />
           </button>
@@ -63,7 +63,7 @@ export function CarouselControls({
             onClick={onNext}
             disabled={!canScrollRight}
             aria-label="Next events"
-            className="w-12 h-12 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-white transition-all duration-300 hover:bg-white hover:text-[var(--ink-950)] hover:border-white disabled:opacity-30 disabled:pointer-events-none outline-none focus-visible:ring-2 focus-visible:ring-[var(--blue-500)] active:scale-95"
+            className="w-12 h-12 rounded-full border border-[var(--line)] bg-white/5 flex items-center justify-center text-white transition-all duration-300 hover:bg-white hover:text-[var(--ink-950)] hover:border-white disabled:opacity-30 disabled:pointer-events-none outline-none focus-visible:ring-2 focus-visible:ring-[var(--violet-400)] active:scale-95 cursor-pointer"
           >
             <ArrowRight className="w-5 h-5" />
           </button>

@@ -36,19 +36,26 @@ ENIGMA is a student-led technical club. The current site (https://enigma-jain-fe
 ### 5.2 Design tokens (approximate, tune while building)
 | Token | Value |
 |---|---|
-| `--blue-500` (accent) | `#2B4DFF` |
-| `--blue-900` (hero deep) | `#0A0B3D` |
-| `--ink-950` (dark bg) | `#08080A` |
-| `--ink-900` (dark card) | `#111114` |
-| `--paper` | `#FFFFFF` |
-| `--mist` (light bg) | `#F3F4F8` |
-| `--text-muted-dark` | `#8B8B95` |
+| `--ink-950` (page bg) | `#050507` |
+| `--ink-900` (raised surfaces, cards) | `#0C0C12` |
+| `--ink-800` (hover surfaces, tiles) | `#15151F` |
+| `--violet-950` (deep gradient start) | `#14092E` |
+| `--violet-700` (gradient mid) | `#5B21B6` |
+| `--violet-600` (filled highlight surfaces) | `#7C3AED` |
+| `--violet-500` (primary accent, hover borders) | `#8B5CF6` |
+| `--violet-400` (small accent text on dark) | `#A78BFA` |
+| `--violet-300` (glow highlight) | `#C4B5FD` |
+| `--yellow-400` (hit of yellow accent) | `#FFD60A` |
+| `--text-primary` | `#FFFFFF` |
+| `--text-muted` | `rgba(255, 255, 255, 0.62)` |
+| `--text-faint` | `rgba(255, 255, 255, 0.40)` |
+| `--line` | `rgba(167, 139, 250, 0.16)` |
 | Display font | Inter Tight (600–700) |
 | Accent font | Instrument Serif *italic* |
 | Body font | Inter (400–500) |
 | Radius | 12 / 24 / 32 px, pill = 999px |
 
-The old lime `#DFFF4A` must **not** appear anywhere.
+Yellow is allowed only as described in the yellow rules (accent only, ~5% of visible color: primary CTA button, active nav dot, logo "z", status dots, and tiny details like the short line before eyebrows).
 
 ## 6. Information Architecture and Content
 

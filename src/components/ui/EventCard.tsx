@@ -25,7 +25,7 @@ export function EventCard({ event, index, isDragging = false }: EventCardProps) 
   const href = event.link?.href || "#";
 
   const cardContent = (
-    <div className="group relative w-[300px] sm:w-[340px] lg:w-[380px] aspect-[4/5.2] shrink-0 snap-start rounded-[28px] overflow-hidden border border-white/10 select-none bg-[var(--ink-900)] transition-all duration-300 hover:border-white/20 focus-within:ring-2 focus-within:ring-[var(--blue-500)] outline-none">
+    <div className="group relative w-[300px] sm:w-[340px] lg:w-[380px] aspect-[4/5.2] shrink-0 snap-start rounded-[28px] overflow-hidden border border-[var(--line)] select-none bg-[var(--ink-900)] transition-all duration-300 hover:border-[var(--violet-400)]/40 focus-within:ring-2 focus-within:ring-[var(--violet-400)] outline-none">
       {/* Background Image / Fallback Gradient */}
       {event.image && !imageFailed ? (
         <>
@@ -38,11 +38,11 @@ export function EventCard({ event, index, isDragging = false }: EventCardProps) 
             onError={() => setImageFailed(true)}
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />
-          {/* Subtle Dark Gradient Overlay (Transparent at ~35% to ink-950/90 at bottom) */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-[var(--ink-950)]/95 transition-opacity duration-300 group-hover:opacity-95" />
+          {/* Subtle Dark Gradient Overlay (Transparent at top to ink-950/90 at bottom) */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-[var(--ink-950)]/90 transition-opacity duration-300 group-hover:opacity-95" />
         </>
       ) : (
-        <div className="absolute inset-0 bg-gradient-to-br from-[var(--blue-900)] via-[#12236E] to-[var(--blue-500)] overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[var(--violet-950)] via-[var(--violet-700)] to-[var(--violet-600)] overflow-hidden">
           <GrainOverlay opacity={0.08} />
           {/* Huge Faint Index Number */}
           <span className="absolute -top-6 -right-6 font-display font-black text-8xl sm:text-9xl text-white/[0.07] select-none pointer-events-none">
@@ -55,11 +55,11 @@ export function EventCard({ event, index, isDragging = false }: EventCardProps) 
       {/* Top Row: Status Pill & Action Arrow */}
       <div className="relative z-10 p-6 flex items-start justify-between">
         {event.status ? (
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/10 text-[11px] font-mono font-medium uppercase tracking-wider text-white select-none">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-[11px] font-mono font-medium uppercase tracking-wider text-white select-none">
             <span
               className={`w-1.5 h-1.5 rounded-full ${
                 event.status === "upcoming"
-                  ? "bg-[var(--blue-500)] shadow-sm shadow-blue-500 animate-pulse"
+                  ? "bg-[var(--yellow-400)] shadow-sm shadow-yellow-400/50 animate-pulse"
                   : "bg-white/40"
               }`}
             />

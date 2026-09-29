@@ -24,10 +24,10 @@ You are building a **single-page website** for ENIGMA, a student tech club. Read
 
 ## 4. Design rules
 - Use only the tokens from PRD §5.2. No hard-coded hex values inside components; use CSS variables or Tailwind theme values.
-- **The old neon lime (`#DFFF4A` and similar) must not appear anywhere.**
+- **Yellow is allowed only as described in the yellow rules** (accent only, ~5% of visible color: primary CTA button, active nav dot, logo "z", status dots, and tiny details like the short line before eyebrows).
 - Headings: bold sans (Inter Tight) with one *italic serif accent word* (Instrument Serif italic), following the `{ plain, accent }` shape in the schema.
-- Radii: 12 / 24 / 32px and pill. Borders: 1px, low contrast.
-- Sections alternate between light (`--paper` / `--mist`) and dark (`--ink-950`), as in the reference.
+- Radii: 12 / 24 / 32px and pill. Borders: 1px, low contrast (`--line`).
+- Surfaces: dark palette with `--ink-950` page background, `--ink-900` raised cards/panels, and `--ink-800` tiles.
 - Generous whitespace. Large type. No clutter, no drop-shadow-heavy skeuomorphism.
 - No emojis in the UI. Icons come from lucide-react only.
 - No stock imagery unless I supply it. Use gradients, type, and CSS shapes instead.

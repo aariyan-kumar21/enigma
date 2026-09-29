@@ -28,8 +28,8 @@ export function SectionTitle({
   className = "",
 }: SectionTitleProps) {
   const isLight = theme === "light";
-  const textColor = isLight ? "text-[var(--ink-950)]" : "text-white";
-  const mutedTextColor = isLight ? "text-neutral-600" : "text-[var(--text-muted-dark)]";
+  const textColor = isLight ? "text-[var(--text-primary)]" : "text-white";
+  const mutedTextColor = isLight ? "text-[var(--text-muted)]" : "text-[var(--text-muted)]";
 
   return (
     <div
@@ -44,7 +44,7 @@ export function SectionTitle({
       <div className="flex flex-col gap-2 max-w-2xl">
         {eyebrow && (
           <div>
-            <Pill variant={isLight ? "dark" : "blue"} size="sm">
+            <Pill variant="violet" size="sm">
               {eyebrow}
             </Pill>
           </div>
@@ -53,7 +53,7 @@ export function SectionTitle({
           className={`font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight ${textColor}`}
         >
           <span>{headline.plain} </span>
-          <span className="font-accent italic font-normal tracking-normal text-[var(--blue-500)]">
+          <span className="font-accent italic font-normal tracking-normal text-[var(--violet-400)]">
             {headline.accent}
           </span>
         </h2>

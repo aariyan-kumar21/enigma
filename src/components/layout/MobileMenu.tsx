@@ -120,27 +120,29 @@ export function MobileMenu({ isOpen, onClose, activeId }: MobileMenuProps) {
           animate="open"
           exit="closed"
           variants={containerVariants}
-          className="fixed inset-0 z-50 flex flex-col justify-between p-6 sm:p-10 bg-gradient-to-b from-[var(--blue-900)] via-[var(--ink-950)] to-[var(--ink-950)] text-white overflow-y-auto"
+          className="fixed inset-0 z-50 flex flex-col justify-between p-6 sm:p-10 bg-gradient-to-b from-[var(--violet-950)] via-[var(--ink-950)] to-[var(--ink-950)] text-white overflow-y-auto"
         >
           {/* Header Row */}
-          <div className="flex items-center justify-between w-full border-b border-white/10 pb-6">
+          <div className="flex items-center justify-between w-full border-b border-[var(--line)] pb-6">
             <div className="flex items-center gap-3">
-              <img
-                src={site.brand.logoSrc}
-                alt=""
-                className="w-8 h-8 text-[var(--blue-500)] filter brightness-200"
-                aria-hidden="true"
-              />
+              <div className="w-9 h-9 rounded-lg overflow-hidden flex items-center justify-center shadow-md shadow-purple-950/50">
+                <img
+                  src={site.brand.logoSrc}
+                  alt=""
+                  className="w-full h-full object-cover"
+                  aria-hidden="true"
+                />
+              </div>
               <div className="flex flex-col">
                 <span className="font-display font-bold text-lg tracking-tight">
                   {site.brand.name}
                   {site.brand.suffix && (
-                    <sub className="text-xs text-[var(--blue-500)] ml-0.5 font-mono">
+                    <sub className="text-xs text-[var(--yellow-400)] ml-0.5 font-mono">
                       {site.brand.suffix}
                     </sub>
                   )}
                 </span>
-                <span className="text-[10px] font-mono tracking-widest text-white/50 uppercase">
+                <span className="text-[10px] font-mono tracking-widest text-[var(--text-faint)] uppercase">
                   {site.brand.tag}
                 </span>
               </div>
@@ -151,7 +153,7 @@ export function MobileMenu({ isOpen, onClose, activeId }: MobileMenuProps) {
               type="button"
               onClick={onClose}
               aria-label="Close navigation menu"
-              className="p-3 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 active:scale-95 transition-all text-white focus-visible:ring-2 focus-visible:ring-[var(--blue-500)] outline-none"
+              className="p-3 rounded-full border border-[var(--line)] bg-white/5 hover:bg-white/10 active:scale-95 transition-all text-white focus-visible:ring-2 focus-visible:ring-[var(--violet-400)] outline-none"
             >
               <X className="w-6 h-6" />
             </button>
@@ -169,20 +171,20 @@ export function MobileMenu({ isOpen, onClose, activeId }: MobileMenuProps) {
                       e.preventDefault();
                       handleLinkClick(`#${item.id}`);
                     }}
-                    className={`group flex items-center justify-between text-3xl sm:text-5xl font-display font-bold tracking-tight transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-[var(--blue-500)] rounded-lg py-1 px-2 ${
+                    className={`group flex items-center justify-between text-3xl sm:text-5xl font-display font-bold tracking-tight transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-[var(--violet-400)] rounded-lg py-1 px-2 ${
                       isActive
                         ? "text-white"
                         : "text-white/60 hover:text-white hover:translate-x-2"
                     }`}
                   >
                     <span className="flex items-center gap-4">
-                      <span className="text-xs font-mono text-[var(--blue-500)] opacity-70">
+                      <span className="text-xs font-mono text-[var(--violet-400)] opacity-70">
                         0{index + 1}
                       </span>
                       <span>{item.label}</span>
                     </span>
                     {isActive && (
-                      <span className="w-2.5 h-2.5 rounded-full bg-[var(--blue-500)] shadow-lg shadow-blue-500/50" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-[var(--yellow-400)] shadow-lg shadow-yellow-400/50" />
                     )}
                   </a>
                 </motion.div>
@@ -193,14 +195,14 @@ export function MobileMenu({ isOpen, onClose, activeId }: MobileMenuProps) {
           {/* Footer Meta Strip */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-white/10 pt-6 text-xs font-mono text-white/60"
+            className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-[var(--line)] pt-6 text-xs font-mono text-[var(--text-muted)]"
           >
             <div className="flex flex-wrap items-center gap-3">
               <span>
                 LAT: {site.meta.lat} · LONG: {site.meta.long}
               </span>
               <span className="text-white/30 hidden sm:inline">|</span>
-              <span className="text-white/40">V_ID: {site.meta.vId}</span>
+              <span className="text-[var(--text-faint)]">V_ID: {site.meta.vId}</span>
             </div>
             <div className="flex items-center gap-2 text-white/90">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />

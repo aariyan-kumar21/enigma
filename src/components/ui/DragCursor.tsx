@@ -23,7 +23,7 @@ export function DragCursor({ label = "HOLD & DRAG" }: DragCursorProps) {
 
   return (
     <motion.div
-      className="pointer-events-none fixed top-0 left-0 z-50 flex items-center justify-center rounded-full bg-[var(--blue-500)] text-white text-[10px] font-mono font-bold tracking-widest uppercase shadow-2xl"
+      className="pointer-events-none fixed top-0 left-0 z-50 flex items-center justify-center rounded-full bg-[var(--violet-500)] text-white text-[10px] font-mono font-bold tracking-widest uppercase shadow-2xl shadow-violet-500/30"
       style={{
         width: 80,
         height: 80,

@@ -34,23 +34,23 @@ export function Button({
   }
 
   const baseStyles =
-    "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300 select-none outline-none focus-visible:ring-2 focus-visible:ring-[var(--blue-500)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ink-950)] group cursor-pointer disabled:pointer-events-none disabled:opacity-40";
+    "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300 select-none outline-none focus-visible:ring-2 focus-visible:ring-[var(--violet-400)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ink-950)] group cursor-pointer disabled:pointer-events-none disabled:opacity-40";
 
   const sizeStyles = {
     sm: "text-xs px-4 py-2",
-    md: "text-sm px-6 py-3",
-    lg: "text-base px-8 py-4",
+    md: "text-sm px-6 py-3 font-semibold",
+    lg: "text-base px-8 py-4 font-semibold",
   }[size];
 
   const variantStyles = {
     primary:
-      "bg-[var(--blue-500)] text-white hover:bg-blue-600 active:scale-[0.98] shadow-lg shadow-blue-500/20",
+      "bg-[var(--yellow-400)] text-[var(--ink-950)] hover:bg-[#FFE14D] active:scale-[0.98] shadow-lg shadow-yellow-400/10",
     secondary:
-      "bg-transparent text-white border border-white/20 hover:border-white/60 hover:bg-white/5 active:scale-[0.98]",
+      "bg-transparent text-white border border-white/30 hover:border-[var(--violet-400)] hover:bg-white/5 active:scale-[0.98]",
     ghost:
-      "bg-transparent text-white/70 hover:text-white hover:bg-white/10 active:scale-[0.98]",
+      "bg-transparent text-[var(--text-muted)] hover:text-white hover:bg-white/5 active:scale-[0.98]",
     dark:
-      "bg-[var(--ink-900)] text-white border border-white/10 hover:border-white/30 hover:bg-white/5 active:scale-[0.98]",
+      "bg-[var(--ink-900)] text-white border border-[var(--line)] hover:border-[var(--violet-400)] hover:bg-[var(--ink-800)] active:scale-[0.98]",
   }[variant];
 
   const content = (
