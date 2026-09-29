@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme {
+  --color-blue-500: var(--blue-500);
+  --color-blue-900: var(--blue-900);
+  --color-ink-950: var(--ink-950);
+  --color-ink-900: var(--ink-900);
+  --color-paper: var(--paper);
+  --color-mist: var(--mist);
+  --color-text-muted-dark: var(--text-muted-dark);
+
+  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Inter Tight", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-accent: "Instrument Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+
+  --radius-card-sm: 12px;
+  --radius-card: 24px;
+  --radius-card-lg: 32px;
+  --radius-pill: 9999px;
+}
+
+:root {
+  --blue-500: #2B4DFF;
+  --blue-900: #0A0B3D;
+  --ink-950: #08080A;
+  --ink-900: #111114;
+  --paper: #FFFFFF;
+  --mist: #F3F4F8;
+  --text-muted-dark: #8B8B95;
+}
+
+/* Base styles & typography defaults */
+html {
+  font-family: var(--font-sans);
+}
+
+body {
+  background-color: var(--ink-950);
+  color: #ffffff;
+  overflow-x: hidden;
+}
