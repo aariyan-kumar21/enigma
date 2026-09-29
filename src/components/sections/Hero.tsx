@@ -38,7 +38,7 @@ export function Hero() {
     <section
       ref={containerRef}
       id={site.nav[0].id}
-      className="relative min-h-[100svh] flex flex-col justify-between overflow-hidden bg-[#07070A] text-[#F5F5F5] pt-24 sm:pt-28 lg:pt-32 pb-6 sm:pb-8 px-6 sm:px-10 lg:px-16 xl:px-20 select-none"
+      className="relative min-h-[100svh] flex flex-col justify-center overflow-hidden bg-[#07070A] text-[#F5F5F5] pt-28 sm:pt-32 lg:pt-36 pb-20 sm:pb-24 lg:pb-28 px-6 sm:px-10 lg:px-16 xl:px-20 select-none"
     >
       {/* ----------------- SUBTLE AMBIENT BACKGROUND LIGHTING ----------------- */}
       <div
@@ -153,7 +153,7 @@ export function Hero() {
           </div>
 
           {/* ================= RIGHT COLUMN (~45%) ================= */}
-          <div className="lg:col-span-5 flex flex-col justify-center space-y-8 sm:space-y-10 lg:pl-8 xl:pl-12">
+          <div className="lg:col-span-5 flex flex-col justify-center lg:pl-6 xl:pl-10">
             {/* Mission Section with Left Vertical Border */}
             <motion.div
               custom={1}
@@ -168,7 +168,7 @@ export function Hero() {
               </div>
 
               {/* Large Stacked Text */}
-              <div className="font-display font-extrabold uppercase text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] leading-[0.95] tracking-tight space-y-1 select-none text-left">
+              <div className="font-display font-extrabold uppercase text-4xl sm:text-5xl lg:text-[46px] xl:text-[54px] leading-[0.94] tracking-tight space-y-1 select-none text-left">
                 <div className="text-white">IDEAS.</div>
                 <div className="text-white">PEOPLE.</div>
                 <div className="text-white">SYSTEMS.</div>
@@ -176,80 +176,13 @@ export function Hero() {
               </div>
 
               {/* Mission Paragraph */}
-              <p className="text-sm sm:text-[15px] text-zinc-400 leading-relaxed max-w-[420px] font-sans font-normal pt-1">
+              <p className="text-sm sm:text-base text-zinc-400 leading-relaxed max-w-[430px] font-sans font-normal pt-1">
                 We bring together curious minds, fearless builders, and creative
                 problem-solvers to learn, build, and break new ground in
                 technology.
               </p>
             </motion.div>
-
-            {/* Three Statistics */}
-            <motion.div
-              custom={2}
-              initial="hidden"
-              animate="visible"
-              variants={fadeUpVariant}
-              className="flex items-center gap-6 sm:gap-8 pt-2"
-            >
-              {/* Stat 1 */}
-              <div>
-                <div className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-white">
-                  20+
-                </div>
-                <div className="font-mono text-[11px] text-zinc-400 tracking-wider uppercase mt-1">
-                  MEMBERS
-                </div>
-              </div>
-
-              {/* Divider */}
-              <div
-                aria-hidden="true"
-                className="w-[1px] h-10 bg-white/15 shrink-0"
-              />
-
-              {/* Stat 2 */}
-              <div>
-                <div className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-white">
-                  5+
-                </div>
-                <div className="font-mono text-[11px] text-zinc-400 tracking-wider uppercase mt-1">
-                  INITIATIVES
-                </div>
-              </div>
-
-              {/* Divider */}
-              <div
-                aria-hidden="true"
-                className="w-[1px] h-10 bg-white/15 shrink-0"
-              />
-
-              {/* Stat 3 */}
-              <div>
-                <div className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-white">
-                  ∞
-                </div>
-                <div className="font-mono text-[11px] text-zinc-400 tracking-wider uppercase mt-1">
-                  POSSIBILITIES
-                </div>
-              </div>
-            </motion.div>
           </div>
-        </div>
-      </div>
-
-      {/* ----------------- BOTTOM INFORMATION BAR ----------------- */}
-      <div className="relative z-10 max-w-[1400px] mx-auto w-full pt-6 sm:pt-8">
-        <div className="border-t border-white/10 pt-4 pb-1 flex items-center justify-between text-xs font-mono text-zinc-400">
-          {/* Left: Location */}
-          <div className="tracking-wider uppercase">BENGALURU, INDIA</div>
-
-          {/* Center: Mission Tagline */}
-          <div className="hidden md:block tracking-widest text-[11px] uppercase text-zinc-500">
-            BUILD / EXPERIMENT / COLLABORATE / MAKE AN IMPACT
-          </div>
-
-          {/* Right: Section Index */}
-          <div className="tracking-wider">[ 01 ]</div>
         </div>
       </div>
     </section>
