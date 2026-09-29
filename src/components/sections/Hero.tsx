@@ -153,21 +153,34 @@ export function Hero() {
           </div>
 
           {/* ================= RIGHT COLUMN (~45%) ================= */}
-          <div className="lg:col-span-5 flex flex-col justify-center space-y-10 sm:space-y-12 lg:pl-8 xl:pl-12">
-            {/* Mission Bracketed Stack with Left Vertical Border */}
+          <div className="lg:col-span-5 flex flex-col justify-center space-y-8 sm:space-y-10 lg:pl-8 xl:pl-12">
+            {/* Mission Section with Left Vertical Border */}
             <motion.div
               custom={1}
               initial="hidden"
               animate="visible"
               variants={fadeUpVariant}
-              className="border-l border-white/15 pl-6 sm:pl-8 space-y-3.5 sm:space-y-4"
+              className="border-l border-white/15 pl-6 sm:pl-8 space-y-5"
             >
-              <div className="font-mono text-base sm:text-lg lg:text-[19px] font-semibold tracking-wider text-zinc-200 select-none">
-                <div>[ IDEAS ]</div>
-                <div>[ PEOPLE ]</div>
-                <div>[ SYSTEMS ]</div>
-                <div className="text-[#9B6DFF]">[ REAL IMPACT ]</div>
+              {/* Small Label */}
+              <div className="font-mono text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#9B6DFF]">
+                [ OUR MISSION ]
               </div>
+
+              {/* Large Stacked Text */}
+              <div className="font-display font-extrabold uppercase text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] leading-[0.95] tracking-tight space-y-1 select-none text-left">
+                <div className="text-white">IDEAS.</div>
+                <div className="text-white">PEOPLE.</div>
+                <div className="text-white">SYSTEMS.</div>
+                <div className="text-[#9B6DFF]">REAL IMPACT.</div>
+              </div>
+
+              {/* Mission Paragraph */}
+              <p className="text-sm sm:text-[15px] text-zinc-400 leading-relaxed max-w-[420px] font-sans font-normal pt-1">
+                We bring together curious minds, fearless builders, and creative
+                problem-solvers to learn, build, and break new ground in
+                technology.
+              </p>
             </motion.div>
 
             {/* Three Statistics */}
