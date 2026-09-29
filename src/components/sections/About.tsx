@@ -1,158 +1,219 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import { site } from "../../content/site";
-import { Reveal } from "../ui/Reveal";
 import { useReducedMotion } from "../../hooks/useReducedMotion";
+
+interface TimelineNodeProps {
+  progress: MotionValue<number>;
+  threshold: number;
+  shouldReduceMotion: boolean;
+}
+
+function TimelineNode({
+  progress,
+  threshold,
+  shouldReduceMotion,
+}: TimelineNodeProps) {
+  const fillOpacity = useTransform(progress, (v) => {
+    if (shouldReduceMotion) return 1;
+    // Exactly empty when line hasn't touched the dot
+    if (v < threshold) return 0;
+    // Smooth fast fill once the line reaches the dot
+    return Math.min(1, (v - threshold) / 0.008);
+  });
+
+  const fillScale = useTransform(progress, (v) => {
+    if (shouldReduceMotion) return 1;
+    if (v < threshold) return 0.4;
+    return 0.4 + 0.6 * Math.min(1, (v - threshold) / 0.008);
+  });
+
+  return (
+    <div
+      aria-hidden="true"
+      className="absolute left-[16px] top-[7px] -translate-x-1/2 w-3 h-3 rounded-full border-2 border-[#9B6DFF]/50 bg-[#08080C] ring-2 ring-[#08080C] flex items-center justify-center transition-transform duration-300 group-hover:scale-125 pointer-events-none"
+    >
+      {/* Filled glowing core: strictly hidden until the line tip touches the dot */}
+      <motion.div
+        style={{
+          opacity: fillOpacity,
+          scale: fillScale,
+        }}
+        className="absolute inset-[-1px] rounded-full bg-[#EDE9FE] shadow-[0_0_10px_#9B6DFF,0_0_18px_rgba(155,109,255,0.9)] ring-2 ring-[#9B6DFF]"
+      />
+    </div>
+  );
+}
 
 export function About() {
   const shouldReduceMotion = useReducedMotion();
   const timelineRef = useRef<HTMLDivElement>(null);
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  // Default calibrated ratios
+  const [nodeThresholds, setNodeThresholds] = useState<number[]>([
+    0.07, 0.33, 0.58, 0.84,
+  ]);
 
   const { scrollYProgress } = useScroll({
     target: timelineRef,
-    offset: ["start 70%", "end 60%"],
+    offset: ["start 75%", "end 60%"],
   });
 
-  const lineHeight = useTransform(
+  const timelineScale = useTransform(
     scrollYProgress,
     [0, 1],
     shouldReduceMotion ? [1, 1] : [0, 1]
   );
 
-  const { headline, lead, manifesto, pillars } = site.about;
+  useEffect(() => {
+    const calculateExactThresholds = () => {
+      if (!timelineRef.current) return;
+      const timelineRect = timelineRef.current.getBoundingClientRect();
+      const lineTotalHeight = timelineRect.height + 32; // line goes from -16px to +16px
+      const lineTop = timelineRect.top - 16;
 
-  // Split manifesto safely at the first colon for display only
-  const colonIndex = manifesto.indexOf(":");
-  const manifestoLabel = colonIndex !== -1 ? manifesto.slice(0, colonIndex).trim() : "[SYSTEM_MANIFESTO]";
-  const manifestoText = colonIndex !== -1 ? manifesto.slice(colonIndex + 1).trim() : manifesto;
+      const computed = itemRefs.current.map((item, idx) => {
+        if (!item) {
+          const defaults = [0.07, 0.33, 0.58, 0.84];
+          return defaults[idx] ?? 0.25 * idx;
+        }
+        const itemRect = item.getBoundingClientRect();
+        const dotY = itemRect.top + 7; // Top of node dot
+        const relativeY = dotY - lineTop;
+        return Math.max(0, Math.min(1, relativeY / lineTotalHeight));
+      });
+
+      setNodeThresholds(computed);
+    };
+
+    calculateExactThresholds();
+    window.addEventListener("resize", calculateExactThresholds);
+    return () => window.removeEventListener("resize", calculateExactThresholds);
+  }, []);
+
+  const { eyebrow, headline, pillars } = site.about;
 
   return (
     <section
       id={site.nav[1].id}
-      className="relative z-10 bg-[var(--ink-950)] text-white rounded-t-[40px] md:rounded-t-[56px] -mt-14 md:-mt-20 pt-8 sm:pt-10 md:pt-12 pb-24 md:pb-32 px-6 lg:px-10 scroll-mt-20 overflow-hidden shadow-2xl border-t border-[var(--line)]"
+      className="relative z-10 bg-[#08080C] text-[#F5F5F5] py-20 lg:py-28 px-6 sm:px-10 lg:px-16 xl:px-24 scroll-mt-20 overflow-hidden border-t border-[#24242C]"
     >
-      {/* 64px Faint Violet Grid with Radial Mask */}
+      {/* Subtle Background Grid */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-0 opacity-100 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_60%,transparent_100%)]"
+        className="pointer-events-none absolute inset-0 z-0 opacity-40 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_60%,transparent_100%)]"
         style={{
           backgroundSize: "64px 64px",
           backgroundImage:
-            "linear-gradient(to right, rgba(139, 92, 246, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(139, 92, 246, 0.05) 1px, transparent 1px)",
+            "linear-gradient(to right, rgba(155, 109, 255, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(155, 109, 255, 0.05) 1px, transparent 1px)",
         }}
       />
 
       {/* Main Container */}
-      <div className="relative z-10 max-w-[1440px] mx-auto w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-16 items-start">
-          {/* Left Column: Giant Heading, Lead & Manifesto (Cols 1-6, Sticky on LG) */}
-          <div className="lg:col-span-6 lg:sticky lg:top-32 space-y-8 sm:space-y-10">
-            {/* Giant Heading */}
-            <Reveal delay={0.08}>
-              <h2 className="font-display font-bold tracking-tight text-white leading-[0.88] flex flex-col select-none">
-                <span className="text-6xl sm:text-7xl md:text-8xl lg:text-[6.5rem] xl:text-[8.5rem] block font-bold">
-                  {headline.plain}
-                </span>
-                <span
-                  className="text-6xl sm:text-7xl md:text-8xl lg:text-[6.5rem] xl:text-[8.5rem] font-accent italic font-normal tracking-normal text-transparent bg-clip-text bg-gradient-to-r from-[var(--violet-500)] via-[var(--violet-400)] to-[var(--violet-300)] block mt-1"
-                  style={{
-                    WebkitTextStroke: "1px rgba(139, 92, 246, 0.4)",
-                  }}
-                >
-                  {headline.accent}
-                </span>
-              </h2>
-            </Reveal>
+      <div className="relative z-10 max-w-7xl mx-auto w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 xl:gap-20 items-center">
+          {/* Left Column: Heading & Editorial Manifesto (~40%) */}
+          <div className="lg:col-span-5 space-y-8">
+            {/* Eyebrow */}
+            <div className="flex items-center gap-3">
+              <span className="font-mono text-xs font-semibold uppercase tracking-widest text-[#9B6DFF]">
+                {eyebrow || "01 / ABOUT"}
+              </span>
+              <div className="w-10 h-[1px] bg-[#9B6DFF]/50" />
+            </div>
 
-            {/* Lead & Manifesto with vertical accent rules & crosshair */}
-            <div className="space-y-8 pt-2 relative">
-              {/* Decorative Crosshair Mark (Desktop) */}
-              <div
-                aria-hidden="true"
-                className="hidden lg:flex absolute right-0 top-3 text-[var(--violet-500)]/60 text-2xl font-light select-none pointer-events-none items-center justify-center w-6 h-6"
-              >
-                +
-              </div>
+            {/* Editorial Heading */}
+            <h2 className="font-display font-bold tracking-tight text-[#F5F5F5] leading-[0.95] flex flex-col select-none">
+              <span className="text-5xl sm:text-6xl lg:text-7xl font-bold uppercase tracking-tight">
+                {headline.plain}
+              </span>
+              <span className="text-5xl sm:text-6xl lg:text-7xl font-accent italic font-normal tracking-normal text-[#9B6DFF] mt-1">
+                {headline.accent}
+              </span>
+            </h2>
 
-              {/* Lead Paragraph */}
-              <Reveal delay={0.16}>
-                <p className="pl-6 border-l-[3px] border-[var(--violet-500)] text-xl sm:text-2xl lg:text-[26px] font-medium leading-snug text-white max-w-lg">
-                  {lead}
-                </p>
-              </Reveal>
-
-              {/* Manifesto Paragraph */}
-              <Reveal delay={0.24}>
-                <div className="pl-6 border-l-[3px] border-[var(--violet-500)]/40 space-y-2 max-w-lg">
-                  <div className="font-mono text-xs font-semibold uppercase tracking-widest text-[var(--violet-400)]">
-                    {manifestoLabel}
-                  </div>
-                  <p className="text-[16px] sm:text-[17px] leading-relaxed text-[var(--text-muted)] font-sans">
-                    {manifestoText}
-                  </p>
-                </div>
-              </Reveal>
+            {/* Manifesto Statement with Left Purple Border */}
+            <div className="border-l-2 border-[#9B6DFF] pl-5 py-1">
+              <p className="text-base sm:text-lg lg:text-[1.125rem] font-normal leading-relaxed text-[#F5F5F5] max-w-md">
+                We build without limits. We question what exists, create what
+                doesn’t, and empower the next generation of technical minds to make
+                a real impact.
+              </p>
             </div>
           </div>
 
-          {/* Right Column: Vertical Timeline of Pillars (Cols 7-12) */}
-          <div ref={timelineRef} className="lg:col-span-6 relative pt-0 lg:pt-2">
-            {/* Timeline Background Line (Faint track) */}
+          {/* Right Column: Editorial Timeline (~60%) */}
+          <div ref={timelineRef} className="lg:col-span-7 relative pt-2">
+            {/* Base Vertical Timeline Line (Passes exactly through center of nodes) */}
             <div
               aria-hidden="true"
-              className="absolute top-4 bottom-4 left-[7px] sm:left-[7px] md:left-[7px] w-[2px] bg-[var(--violet-500)]/20 pointer-events-none"
+              className="absolute left-[16px] -translate-x-1/2 -top-4 -bottom-4 w-[2px] bg-gradient-to-b from-[#9B6DFF]/30 via-[#9B6DFF]/70 to-[#9B6DFF]/20 pointer-events-none shadow-[0_0_8px_rgba(155,109,255,0.4)]"
             />
 
-            {/* Animated Dynamic Timeline Line */}
+            {/* Dynamic Interactive Glow Line */}
             <motion.div
               aria-hidden="true"
               style={{
-                scaleY: lineHeight,
+                scaleY: timelineScale,
                 originY: 0,
               }}
-              className="absolute top-4 bottom-4 left-[7px] sm:left-[7px] md:left-[7px] w-[2px] bg-[var(--violet-500)]/70 shadow-[0_0_10px_rgba(139,92,246,0.6)] pointer-events-none"
+              className="absolute left-[16px] -translate-x-1/2 -top-4 -bottom-4 w-[2px] bg-[#9B6DFF] shadow-[0_0_12px_rgba(155,109,255,0.8)] pointer-events-none"
             />
 
-            {/* Ordered List of Pillars */}
-            <ol className="relative z-10 flex flex-col gap-16 lg:gap-24">
+            {/* Timeline Items */}
+            <div className="relative z-10 flex flex-col gap-10 sm:gap-12">
               {pillars.map((pillar, index) => (
-                <li
+                <motion.div
                   key={pillar.title}
-                  className="group relative flex items-start"
+                  ref={(el) => {
+                    itemRefs.current[index] = el;
+                  }}
+                  initial={
+                    shouldReduceMotion
+                      ? { opacity: 1 }
+                      : { opacity: 0, y: 10 }
+                  }
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-30px" }}
+                  transition={{
+                    duration: 0.4,
+                    delay: index * 0.08,
+                    ease: "easeOut",
+                  }}
+                  className="group relative flex flex-col pl-[42px] sm:pl-[46px]"
                 >
-                  {/* Timeline Glowing Dot */}
-                  <motion.div
-                    initial={{ opacity: shouldReduceMotion ? 1 : 0.3, scale: shouldReduceMotion ? 1 : 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true, margin: "-40px" }}
-                    transition={{ duration: 0.4, delay: index * 0.08 }}
-                    aria-hidden="true"
-                    className="absolute left-0 top-2 -translate-x-[0px] w-4 h-4 rounded-full bg-[var(--violet-300)] shadow-[0_0_12px_var(--violet-500)] ring-2 ring-[var(--violet-400)]/60 transition-all duration-300 group-hover:scale-125 group-hover:shadow-[0_0_20px_var(--violet-500)] group-hover:bg-white"
+                  {/* Dynamic Circular Node (Fills only when the line reaches this dot) */}
+                  <TimelineNode
+                    progress={scrollYProgress}
+                    threshold={nodeThresholds[index] ?? 0.25 * index}
+                    shouldReduceMotion={shouldReduceMotion}
                   />
 
-                  {/* Content Container */}
-                  <div className="pl-8 md:pl-20 w-full">
-                    <Reveal delay={shouldReduceMotion ? 0 : 0.1 + index * 0.08}>
-                      {/* Title Row: Bold Title + Horizontal Gradient Accent Line */}
-                      <div className="flex items-center gap-4 sm:gap-6 w-full">
-                        <h3 className="font-display font-bold uppercase text-2xl sm:text-3xl lg:text-[32px] text-white tracking-tight shrink-0">
-                          {pillar.title}
-                        </h3>
-                        <div
-                          aria-hidden="true"
-                          className="flex-1 h-[1px] bg-gradient-to-r from-[var(--violet-500)]/60 via-[var(--violet-400)]/30 to-transparent transition-all duration-300 group-hover:from-[var(--violet-400)] group-hover:via-[var(--violet-300)]/50"
-                        />
-                      </div>
-
-                      {/* Description */}
-                      <p className="text-base sm:text-[17px] text-[var(--text-muted)] leading-relaxed max-w-md pt-3 font-sans">
-                        {pillar.description}
-                      </p>
-                    </Reveal>
+                  {/* Header Row: Number + Heading + Horizontal Divider */}
+                  <div className="flex items-center gap-3 w-full">
+                    <span className="font-mono text-xs font-semibold tracking-wider text-[#9B6DFF] shrink-0">
+                      {pillar.index || `0${index + 1}`}
+                    </span>
+                    <span className="text-[#9B6DFF]/60 text-xs font-mono select-none">
+                      —
+                    </span>
+                    <h3 className="font-display font-bold uppercase text-base sm:text-lg text-[#F5F5F5] tracking-tight shrink-0 transition-colors duration-200 group-hover:text-[#9B6DFF]">
+                      {pillar.title}
+                    </h3>
+                    <div
+                      aria-hidden="true"
+                      className="flex-1 h-[1px] bg-gradient-to-r from-[#9B6DFF]/40 via-[#24242C] to-transparent"
+                    />
                   </div>
-                </li>
+
+                  {/* Description */}
+                  <p className="text-sm sm:text-[15px] text-[#96969F] leading-relaxed max-w-xl pt-2 font-sans font-normal">
+                    {pillar.description}
+                  </p>
+                </motion.div>
               ))}
-            </ol>
+            </div>
           </div>
         </div>
       </div>

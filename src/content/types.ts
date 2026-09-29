@@ -41,14 +41,14 @@ export interface Pillar {
   index: string;        // "01"
   title: string;
   description: string;
-  icon: "lightbulb" | "users" | "trophy" | "target";
+  icon?: "lightbulb" | "users" | "trophy" | "target";
   highlighted?: boolean; // filled violet card
 }
 
 export interface About {
   eyebrow: string;
   headline: { plain: string; accent: string };
-  lead: string;
+  lead?: string;
   manifesto: string;
   pillars: Pillar[];    // exactly 4
 }

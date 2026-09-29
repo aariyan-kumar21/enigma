@@ -34,40 +34,34 @@ export const site: SiteContent = {
   },
 
   about: {
-    eyebrow: "SECTOR.ORIGIN",
-    headline: { plain: "ABOUT", accent: "ENIGMA." },
-    lead: "ENIGMA is a collective of student innovators dedicated to technical excellence and creative destruction.",
+    eyebrow: "01 / ABOUT",
+    headline: { plain: "ABOUT", accent: "ENIGMA" },
     manifesto:
-      "[SYSTEM_MANIFESTO]: We believe in creating an environment where high-intensity technology meets radical creativity, empowering the next generation of builders.",
+      "We build without limits. We question what exists, create what doesn’t, and empower the next generation of technical minds to make a real impact.",
     pillars: [
       {
         index: "01",
         title: "TECH INNOVATION",
         description:
           "Fostering creative solutions and cutting-edge technological advancement in a raw technical environment.",
-        icon: "lightbulb",
       },
       {
         index: "02",
         title: "CORE COMMUNITY",
         description:
           "Building a collaborative network of passionate tech enthusiasts and technical rebels.",
-        icon: "users",
       },
       {
         index: "03",
         title: "MISSION EXCELLENCE",
         description:
-          "Striving for technical mastery and professional development through rigorous missions.",
-        icon: "trophy",
+          "Striving for technical mastery and professional development through rigorous learning and real-world creation.",
       },
       {
         index: "04",
         title: "MISSION.LOG",
         description:
-          "To empower students with the knowledge and community needed to excel in technical innovation.",
-        icon: "target",
-        highlighted: true,
+          "Empowering students with the knowledge and community needed to excel in technical innovation and create lasting impact.",
       },
     ],
   },
