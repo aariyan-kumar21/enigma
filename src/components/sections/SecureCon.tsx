@@ -1,6 +1,5 @@
 import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
 import { site } from "../../content/site";
-import { Pill } from "../ui/Pill";
 import { Reveal } from "../ui/Reveal";
 
 export function SecureCon() {
@@ -28,12 +27,6 @@ export function SecureCon() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-white/10">
           <div className="space-y-4 max-w-2xl">
-            <Reveal direction="down">
-              <Pill variant="blue" size="sm">
-                {secure.eyebrow || "SECTOR.COMMUNICATIONS"}
-              </Pill>
-            </Reveal>
-
             <Reveal delay={0.1}>
               <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-white leading-[0.95]">
                 <span>{secure.headline.plain} </span>
@@ -50,12 +43,6 @@ export function SecureCon() {
                 </p>
               </Reveal>
             )}
-          </div>
-
-          <div className="hidden md:block">
-            <span className="text-xs font-mono text-white/40 uppercase tracking-widest">
-              [ Protocol.Contact_v2.0 ]
-            </span>
           </div>
         </div>
 

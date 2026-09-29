@@ -1,5 +1,4 @@
 import { site } from "../../content/site";
-import { Pill } from "../ui/Pill";
 import { PillarCard } from "../ui/PillarCard";
 import { Reveal } from "../ui/Reveal";
 
@@ -13,12 +12,6 @@ export function About() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column: Eyebrow, Editorial Heading, Lead & Manifesto (Cols 1-5, Sticky on LG) */}
           <div className="lg:col-span-5 lg:sticky lg:top-32 space-y-8">
-            <Reveal direction="down">
-              <Pill variant="dark" size="sm">
-                {site.about.eyebrow}
-              </Pill>
-            </Reveal>
-
             <Reveal delay={0.1}>
               <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-[var(--ink-950)] leading-[0.95]">
                 <span>{site.about.headline.plain} </span>

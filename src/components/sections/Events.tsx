@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import { site } from "../../content/site";
-import { Pill } from "../ui/Pill";
 import { EventCard } from "../ui/EventCard";
 import { CarouselControls } from "../ui/CarouselControls";
 import { Reveal } from "../ui/Reveal";
@@ -35,12 +34,6 @@ export function Events() {
         {/* Header Row: Eyebrow + Heading + Desktop Controls */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 sm:pb-16">
           <div className="space-y-4 max-w-2xl">
-            <Reveal direction="down">
-              <Pill variant="default" size="sm">
-                {site.events.eyebrow}
-              </Pill>
-            </Reveal>
-
             <Reveal delay={0.1}>
               <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-white leading-[0.95]">
                 <span>{site.events.headline.plain} </span>
@@ -117,9 +110,9 @@ export function Events() {
         )}
       </div>
 
-      {/* Bottom Controls & Progress Bar */}
+      {/* Bottom Controls for Mobile */}
       {!isEmpty && (
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-10 pt-8 sm:pt-10">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-10 pt-6 md:hidden flex justify-end">
           <CarouselControls
             canScrollLeft={canScrollLeft}
             canScrollRight={canScrollRight}
@@ -128,9 +121,8 @@ export function Events() {
             scrollProgress={scrollProgress}
             activeIndex={activeIndex}
             totalCount={items.length}
-            showProgress={true}
+            showProgress={false}
             showButtons={true}
-            className="md:[&>div:last-child]:hidden" // Hide duplicate buttons on desktop since they are in the header row
           />
         </div>
       )}

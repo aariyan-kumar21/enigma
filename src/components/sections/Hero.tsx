@@ -154,29 +154,6 @@ export function Hero() {
           </div>
         </div>
       </div>
-
-      {/* Bottom Metadata Caption */}
-      <div className="relative z-20 max-w-[1440px] mx-auto w-full pt-8 border-t border-white/10">
-        <motion.div
-          custom={3}
-          initial="hidden"
-          animate="visible"
-          variants={fadeUpVariant}
-          className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono uppercase tracking-wider text-white/60"
-        >
-          <div className="flex items-center gap-4">
-            <span className="text-white/80 font-medium">V_ID: {site.meta.vId}</span>
-            <span className="text-white/30 hidden sm:inline">|</span>
-            <span>
-              LAT: {site.meta.lat} · LONG: {site.meta.long}
-            </span>
-          </div>
-
-          <div className="text-[11px] text-white/40 tracking-widest hidden md:block">
-            [SYSTEM: ACTIVE // SECTOR.ALPHA]
-          </div>
-        </motion.div>
-      </div>
     </section>
   );
 }

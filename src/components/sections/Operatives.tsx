@@ -1,5 +1,4 @@
 import { site } from "../../content/site";
-import { Pill } from "../ui/Pill";
 import { OperativeCard } from "../ui/OperativeCard";
 import { Reveal } from "../ui/Reveal";
 
@@ -15,12 +14,6 @@ export function Operatives() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/5">
           <div className="space-y-4 max-w-2xl">
-            <Reveal direction="down">
-              <Pill variant="dark" size="sm">
-                {site.operatives.eyebrow}
-              </Pill>
-            </Reveal>
-
             <Reveal delay={0.1}>
               <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-[var(--ink-950)] leading-[0.95]">
                 <span>{site.operatives.headline.plain} </span>
@@ -37,15 +30,6 @@ export function Operatives() {
                 </p>
               </Reveal>
             )}
-          </div>
-
-          <div className="hidden md:flex flex-col items-end">
-            <span className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
-              [ UNIT.ROSTER_V1.0 ]
-            </span>
-            <span className="text-xs font-mono text-[var(--blue-500)] font-semibold mt-1">
-              TOTAL ACTIVE: {items.length} OPERATIVES
-            </span>
           </div>
         </div>
 

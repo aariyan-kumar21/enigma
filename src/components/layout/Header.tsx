@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { site } from "../../content/site";
 import { useActiveSection } from "../../hooks/useActiveSection";
-import { useLiveClock } from "../../hooks/useLiveClock";
 import { MobileMenu } from "./MobileMenu";
 
 export function Header() {
@@ -10,7 +9,6 @@ export function Header() {
 
   const sectionIds = site.nav.map((item) => item.id);
   const activeSection = useActiveSection(sectionIds, "home");
-  const clock = useLiveClock(site.meta.timezone);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -74,18 +72,6 @@ export function Header() {
               </span>
             </div>
           </a>
-
-          {/* Centre-Left: Meta Strip (Desktop lg+) */}
-          <div className="hidden lg:flex items-center gap-4 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-white/70">
-            <span className="flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--blue-500)]" />
-              <span>LAT {site.meta.lat} · LONG {site.meta.long}</span>
-            </span>
-            <span className="text-white/20">|</span>
-            <span className="tabular-nums font-medium text-white/90">
-              {clock} IST
-            </span>
-          </div>
 
           {/* Right: Nav Links (Desktop lg+) */}
           <nav
