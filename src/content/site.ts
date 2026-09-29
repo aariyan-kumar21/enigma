@@ -108,8 +108,8 @@ export const site: SiteContent = {
 
   operatives: {
     eyebrow: "SECTOR.ROSTER",
-    headline: { plain: "THE", accent: "OPERATIVES." },
-    description: "CORE UNIT RESPONSIBLE FOR TECHNICAL REBELLION AND DEPLOYMENT OF INNOVATIVE SOLUTIONS.",
+    headline: { plain: "THE", accent: "CORE TEAM." },
+    description: "The people shaping ENIGMA, driving its initiatives, and turning ideas into meaningful technical experiences.",
     items: [
       {
         id: "yamuna-sharma",
@@ -153,7 +153,7 @@ export const site: SiteContent = {
       {
         id: "shaili-srivastava",
         name: "Shaili Srivastava",
-        role: "Operation Lead",
+        role: "Operations Lead",
         description: "Passionate about technology and problem-solving. I love building efficient systems, optimizing workflows, and constantly learning new stuff to stay ahead.",
         photo: "/leads/operation.jpeg",
         group: "core",

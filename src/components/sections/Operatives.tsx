@@ -25,7 +25,7 @@ export function Operatives() {
 
             {site.operatives.description && (
               <Reveal delay={0.2}>
-                <p className="text-sm sm:text-base text-[var(--text-muted)] font-mono uppercase tracking-wider max-w-xl pl-4 border-l-2 border-[var(--violet-500)] mt-2">
+                <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed max-w-xl pl-4 border-l-2 border-[var(--violet-500)] mt-2">
                   {site.operatives.description}
                 </p>
               </Reveal>
