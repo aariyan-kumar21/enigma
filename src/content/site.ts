@@ -28,9 +28,9 @@ export const site: SiteContent = {
     eyebrow: "TECHNICAL REBELLION",
     headline: { plain: "SOLVE THE", accent: "UNKNOWN." },
     paragraph:
-      "We are a collective of developers, designers, and innovators unraveling the mysteries of technology through creative destruction.",
-    primaryCta: { label: "ACCESS SOCIALS", href: "#secure" },
-    secondaryCta: { label: "JOIN NETWORK", href: "https://chat.whatsapp.com/KUe221OJGsd63Hs5grwUMS" },
+      "A student-led collective building, experimenting, and deploying ideas that challenge the ordinary and create real-world impact.",
+    primaryCta: { label: "Explore Enigma", href: "#about" },
+    secondaryCta: { label: "Join the Collective", href: "https://chat.whatsapp.com/KUe221OJGsd63Hs5grwUMS" },
   },
 
   about: {

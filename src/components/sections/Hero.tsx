@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion, type Variants } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import { site } from "../../content/site";
-import { Button } from "../ui/Button";
 import { GrainOverlay } from "../ui/GrainOverlay";
 import { useReducedMotion } from "../../hooks/useReducedMotion";
 
@@ -10,13 +10,13 @@ export function Hero() {
   const shouldReduceMotion = useReducedMotion();
 
   const headlineVariant: Variants = {
-    hidden: { y: "115%", opacity: 0 },
+    hidden: { y: "100%", opacity: 0 },
     visible: (custom: number) => ({
       y: 0,
       opacity: 1,
       transition: {
-        duration: shouldReduceMotion ? 0.05 : 0.85,
-        delay: shouldReduceMotion ? 0 : custom * 0.15,
+        duration: shouldReduceMotion ? 0.05 : 0.8,
+        delay: shouldReduceMotion ? 0 : custom * 0.12,
         ease: [0.16, 1, 0.3, 1],
       },
     }),
@@ -28,8 +28,8 @@ export function Hero() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: shouldReduceMotion ? 0.05 : 0.7,
-        delay: shouldReduceMotion ? 0 : custom * 0.12 + 0.25,
+        duration: shouldReduceMotion ? 0.05 : 0.65,
+        delay: shouldReduceMotion ? 0 : custom * 0.1 + 0.2,
         ease: [0.16, 1, 0.3, 1],
       },
     }),
@@ -39,135 +39,61 @@ export function Hero() {
     <section
       ref={containerRef}
       id={site.nav[0].id}
-      className="relative min-h-[100svh] flex flex-col justify-between overflow-hidden bg-[var(--ink-950)] text-white pt-28 sm:pt-36 lg:pt-36 pb-20 sm:pb-28 lg:pb-32 px-6 sm:px-10 lg:px-16 select-none"
+      className="relative min-h-[100svh] flex flex-col justify-between overflow-hidden bg-[#07070A] text-[#F5F5F5] pt-28 sm:pt-32 lg:pt-36 pb-8 sm:pb-10 px-6 sm:px-10 lg:px-16 select-none"
     >
-      {/* ----------------- TECHNICAL BACKGROUND LAYER ----------------- */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-        {/* Subtle Violet Haze concentrated along 54% width band */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_80%_at_54%_45%,rgba(91,33,182,0.22),transparent_75%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_25%_60%_at_54%_45%,rgba(20,9,46,0.6),transparent_80%)]" />
+      {/* ----------------- SUBTLE AMBIENT BACKGROUND LIGHTING ----------------- */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+      >
+        {/* Top-Right Ambient Purple Radial Glow */}
+        <div className="absolute -top-[10%] -right-[10%] w-[55vw] h-[55vw] max-w-[750px] max-h-[750px] rounded-full bg-[radial-gradient(circle,rgba(155,109,255,0.18)_0%,transparent_70%)] blur-2xl" />
 
-        {/* 64px Faint Technical Grid with Radial Fade */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: shouldReduceMotion ? 0.1 : 1.2, delay: 0.3 }}
-          className="absolute inset-0 [mask-image:radial-gradient(ellipse_60%_55%_at_50%_45%,#000_65%,transparent_100%)]"
+        {/* Bottom-Left Ambient Purple Radial Glow */}
+        <div className="absolute -bottom-[10%] -left-[10%] w-[50vw] h-[50vw] max-w-[700px] max-h-[700px] rounded-full bg-[radial-gradient(circle,rgba(155,109,255,0.15)_0%,transparent_70%)] blur-2xl" />
+
+        {/* 64px Faint Grid */}
+        <div
+          className="absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_70%_60%_at_50%_50%,#000_60%,transparent_100%)]"
           style={{
             backgroundSize: "64px 64px",
             backgroundImage:
-              "linear-gradient(to right, rgba(139, 92, 246, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(139, 92, 246, 0.05) 1px, transparent 1px)",
+              "linear-gradient(to right, rgba(155, 109, 255, 0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(155, 109, 255, 0.04) 1px, transparent 1px)",
           }}
         />
-
-        {/* Main Bright Vertical Hairline at 54% width with drawing animation and subtle glow pulse */}
-        <motion.div
-          initial={{ scaleY: shouldReduceMotion ? 1 : 0 }}
-          animate={{ scaleY: 1 }}
-          transition={{ duration: shouldReduceMotion ? 0.05 : 1.2, ease: [0.16, 1, 0.3, 1] }}
-          style={{ originY: 0 }}
-          className="absolute inset-y-0 left-[54%] w-[1px] bg-[var(--violet-400)]/70 shadow-[0_0_12px_rgba(139,92,246,0.6)] z-0"
-        >
-          <motion.div
-            animate={
-              shouldReduceMotion
-                ? {}
-                : {
-                    opacity: [0.5, 0.95, 0.5],
-                  }
-            }
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="w-full h-full bg-[var(--violet-300)] shadow-[0_0_16px_var(--violet-500)]"
-          />
-        </motion.div>
-
-        {/* Secondary Vertical Hairlines (Desktop) */}
-        <div className="hidden lg:block absolute inset-y-0 left-[4%] w-[1px] bg-[var(--violet-500)]/18 z-0" />
-        <div className="hidden lg:block absolute inset-y-0 left-[61%] w-[1px] bg-[var(--violet-500)]/18 z-0" />
-        <div className="hidden lg:block absolute inset-y-0 left-[82%] w-[1px] bg-[var(--violet-500)]/18 z-0" />
-
-        {/* Secondary Horizontal Hairlines (Desktop) */}
-        <div className="hidden lg:block absolute inset-x-0 top-[47%] h-[1px] bg-[var(--violet-500)]/18 z-0" />
-        <div className="hidden lg:block absolute inset-x-0 top-[80%] h-[1px] bg-[var(--violet-500)]/18 z-0" />
-        <div className="hidden lg:block absolute inset-x-0 top-[96%] h-[1px] bg-[var(--violet-500)]/18 z-0" />
-
-        {/* Crosshair "+" Marks at line intersections */}
-        <div className="absolute top-[47%] left-[54%] -translate-x-1/2 -translate-y-1/2 text-[var(--violet-400)]/60 text-2xl font-light select-none z-0">
-          +
-        </div>
-        <div className="hidden lg:block absolute top-[80%] left-[82%] -translate-x-1/2 -translate-y-1/2 text-[var(--violet-400)]/60 text-2xl font-light select-none z-0">
-          +
-        </div>
-        <div className="hidden lg:block absolute top-[80%] left-[4%] -translate-x-1/2 -translate-y-1/2 text-[var(--violet-400)]/60 text-2xl font-light select-none z-0">
-          +
-        </div>
-        <div className="hidden lg:block absolute top-[12%] left-[54%] -translate-x-1/2 -translate-y-1/2 text-[var(--violet-400)]/60 text-2xl font-light select-none z-0">
-          +
-        </div>
-
-        {/* Tiny Marker Dots on intersecting lines */}
-        <span className="hidden lg:block absolute top-[47%] left-[4%] -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[var(--violet-300)] shadow-[0_0_6px_var(--violet-500)]" />
-        <span className="hidden lg:block absolute top-[80%] left-[54%] -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[var(--violet-300)] shadow-[0_0_6px_var(--violet-500)]" />
-        <span className="hidden lg:block absolute top-[80%] left-[61%] -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[var(--violet-300)] shadow-[0_0_6px_var(--violet-500)]" />
-
-        {/* Large Partial Circle Arc in Bottom-Left Corner (Desktop) */}
-        <div className="hidden lg:block absolute -bottom-[120px] -left-[140px] w-[420px] h-[420px] rounded-full border border-[var(--violet-500)]/45 z-0">
-          {/* Arc tangent dot markers */}
-          <span className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--violet-300)] shadow-[0_0_8px_var(--violet-500)]" />
-          <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[var(--violet-300)] shadow-[0_0_8px_var(--violet-500)]" />
-        </div>
-
-        {/* Giant Outlined ENIGMA Watermark across upper-middle */}
-        <div className="absolute inset-x-0 top-[12%] lg:top-[8%] z-0 flex items-center justify-center select-none overflow-hidden opacity-20 lg:opacity-22 pointer-events-none">
-          <span
-            className="font-accent italic font-normal text-[28vw] lg:text-[24vw] text-transparent leading-none tracking-tighter whitespace-nowrap block"
-            style={{
-              WebkitTextStroke: "1.5px var(--violet-500)",
-            }}
-          >
-            {site.brand.name}
-          </span>
-        </div>
-
-        {/* Bottom Fade */}
-        <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[var(--ink-950)] to-transparent z-0" />
       </div>
 
       {/* Grain noise overlay */}
-      <GrainOverlay opacity={0.07} />
+      <GrainOverlay opacity={0.06} />
 
-      {/* ----------------- MAIN HERO CONTENT ----------------- */}
-      <div className="relative z-10 max-w-[1440px] mx-auto w-full flex-1 flex flex-col justify-center my-auto pt-6 lg:pt-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-end">
-          {/* Left Column: Eyebrow + Massive Headline (Cols 1-7) */}
-          <div className="lg:col-span-7 flex flex-col justify-center space-y-4 sm:space-y-6">
-            {/* Eyebrow: 80px Violet Line + TECHNICAL REBELLION */}
+      {/* ----------------- MAIN HERO CONTENT (TWO COLUMNS) ----------------- */}
+      <div className="relative z-10 max-w-[1400px] mx-auto w-full flex-1 flex flex-col justify-center my-auto pt-4 lg:pt-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 xl:gap-20 items-center">
+          {/* Left Column: Eyebrow + Massive Headline + Paragraph + CTAs (Cols 1-7, ~58%) */}
+          <div className="lg:col-span-7 flex flex-col justify-center space-y-6 sm:space-y-7">
+            {/* Eyebrow */}
             <motion.div
               custom={0}
               initial="hidden"
               animate="visible"
               variants={fadeUpVariant}
-              className="flex items-center gap-4"
+              className="flex items-center gap-3"
             >
-              <span className="w-16 sm:w-20 h-[1px] bg-[var(--violet-500)] shrink-0" />
-              <span className="font-mono text-xs sm:text-[14px] lg:text-[15px] font-semibold uppercase tracking-[0.45em] sm:tracking-[0.5em] text-white/90">
+              <span className="w-8 h-[1px] bg-zinc-500 shrink-0" />
+              <span className="font-mono text-xs sm:text-[13px] font-semibold uppercase tracking-[0.25em] text-zinc-400">
                 {site.hero.eyebrow}
               </span>
             </motion.div>
 
-            {/* Headline (h1) */}
-            <h1 className="font-display font-extrabold tracking-tighter text-white flex flex-col leading-[0.85] select-none">
+            {/* Massive Editorial Headline */}
+            <h1 className="font-display font-extrabold tracking-tight text-white flex flex-col leading-[0.88] select-none">
               <span className="overflow-hidden block py-1">
                 <motion.span
                   custom={0}
                   initial="hidden"
                   animate="visible"
                   variants={headlineVariant}
-                  className="block text-5xl sm:text-7xl md:text-8xl lg:text-[6.5rem] xl:text-[9.5rem] font-extrabold text-white tracking-[-0.04em]"
+                  className="block text-5xl sm:text-7xl md:text-8xl lg:text-[6.2rem] xl:text-[7.8rem] font-extrabold text-white tracking-[-0.03em] uppercase"
                 >
                   {site.hero.headline.plain}
                 </motion.span>
@@ -178,82 +104,154 @@ export function Hero() {
                   initial="hidden"
                   animate="visible"
                   variants={headlineVariant}
-                  className="block font-accent italic font-normal tracking-normal text-transparent bg-clip-text bg-gradient-to-r from-[var(--violet-500)] via-[var(--violet-400)] to-[var(--violet-400)] text-5xl sm:text-7xl md:text-8xl lg:text-[6.8rem] xl:text-[10rem]"
-                  style={{
-                    WebkitTextStroke: "1px var(--violet-500)",
-                  }}
+                  className="block font-accent italic font-normal tracking-normal text-[#9B6DFF] text-5xl sm:text-7xl md:text-8xl lg:text-[6.6rem] xl:text-[8.3rem]"
                 >
                   {site.hero.headline.accent}
                 </motion.span>
               </span>
             </h1>
-          </div>
 
-          {/* Right Column: Paragraph + Dual CTA Buttons (Cols 8-12, aligned near UNKNOWN) */}
-          <div className="lg:col-span-5 flex flex-col justify-end space-y-8 pb-2 lg:pb-3 lg:pl-4">
-            {/* Paragraph with 2px Violet Left Accent Rule */}
+            {/* Paragraph Subtitle */}
             <motion.p
-              custom={1}
+              custom={2}
               initial="hidden"
               animate="visible"
               variants={fadeUpVariant}
-              className="pl-6 border-l-2 border-[var(--violet-500)] text-base sm:text-lg lg:text-[22px] text-white/80 font-normal leading-relaxed max-w-[520px] font-sans"
+              className="text-base sm:text-lg lg:text-[19px] text-[#A1A1AA] font-normal leading-relaxed max-w-[580px] font-sans"
             >
-              {site.hero.paragraph}
+              A student-led collective building, experimenting, and deploying
+              ideas that challenge the ordinary and create{" "}
+              <span className="text-[#9B6DFF] font-medium">
+                real-world impact.
+              </span>
             </motion.p>
 
-            {/* Buttons: Flat Yellow Primary + Outlined Secondary */}
+            {/* Dual CTA Buttons */}
+            <motion.div
+              custom={3}
+              initial="hidden"
+              animate="visible"
+              variants={fadeUpVariant}
+              className="flex flex-wrap items-center gap-4 pt-2"
+            >
+              {/* Primary Button */}
+              <a
+                href="#about"
+                className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#9B6DFF] hover:bg-[#8B5CF6] text-white text-sm sm:text-base font-medium transition-all duration-300 shadow-[0_0_20px_rgba(155,109,255,0.35)] hover:shadow-[0_0_25px_rgba(155,109,255,0.5)] active:scale-95"
+              >
+                <span>Explore Enigma</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
+
+              {/* Secondary Button */}
+              <a
+                href="https://chat.whatsapp.com/KUe221OJGsd63Hs5grwUMS"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-7 py-3 rounded-full border border-white/20 hover:border-[#9B6DFF] hover:text-[#9B6DFF] bg-transparent text-white text-sm sm:text-base font-medium transition-all duration-300 active:scale-95"
+              >
+                <span>Join the Collective</span>
+              </a>
+            </motion.div>
+          </div>
+
+          {/* Right Column: Typographic Mission Block + Stats (Cols 8-12, ~42%) */}
+          <div className="lg:col-span-5 flex flex-col justify-center space-y-10 lg:pl-6">
+            {/* Philosophy & Mission Stack */}
             <motion.div
               custom={2}
               initial="hidden"
               animate="visible"
               variants={fadeUpVariant}
-              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2"
+              className="space-y-4"
             >
-              <Button
-                variant="primary"
-                size="lg"
-                href={site.hero.primaryCta.href}
-                showArrow
-                className="w-full sm:w-auto min-h-[48px]"
-              >
-                {site.hero.primaryCta.label}
-              </Button>
-              <Button
-                variant="secondary"
-                size="lg"
-                href={site.hero.secondaryCta.href}
-                className="w-full sm:w-auto min-h-[48px]"
-              >
-                {site.hero.secondaryCta.label}
-              </Button>
+              <div className="font-mono text-base sm:text-lg lg:text-xl font-bold tracking-wider text-zinc-300 space-y-1.5 select-none">
+                <div>[ IDEAS ]</div>
+                <div>[ PEOPLE ]</div>
+                <div>[ SYSTEMS ]</div>
+                <div className="text-[#9B6DFF]">[ REAL IMPACT ]</div>
+              </div>
+
+              <p className="text-sm sm:text-[15px] text-[#96969F] leading-relaxed max-w-md pt-2 font-sans font-normal">
+                We bring together curious minds, fearless builders, and creative
+                problem-solvers to learn, build, and break new ground in
+                technology.
+              </p>
+            </motion.div>
+
+            {/* Three Stats */}
+            <motion.div
+              custom={3}
+              initial="hidden"
+              animate="visible"
+              variants={fadeUpVariant}
+              className="flex items-center gap-6 sm:gap-8 pt-2"
+            >
+              {/* Stat 1 */}
+              <div>
+                <div className="font-display font-bold text-2xl sm:text-3xl text-white">
+                  20+
+                </div>
+                <div className="font-mono text-[11px] text-zinc-400 tracking-wider uppercase mt-1">
+                  MEMBERS
+                </div>
+              </div>
+
+              {/* Divider */}
+              <div
+                aria-hidden="true"
+                className="w-[1px] h-9 bg-white/10 shrink-0"
+              />
+
+              {/* Stat 2 */}
+              <div>
+                <div className="font-display font-bold text-2xl sm:text-3xl text-white">
+                  5+
+                </div>
+                <div className="font-mono text-[11px] text-zinc-400 tracking-wider uppercase mt-1">
+                  INITIATIVES
+                </div>
+              </div>
+
+              {/* Divider */}
+              <div
+                aria-hidden="true"
+                className="w-[1px] h-9 bg-white/10 shrink-0"
+              />
+
+              {/* Stat 3 */}
+              <div>
+                <div className="font-display font-bold text-2xl sm:text-3xl text-white">
+                  ∞
+                </div>
+                <div className="font-mono text-[11px] text-zinc-400 tracking-wider uppercase mt-1">
+                  POSSIBILITIES
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
       </div>
 
-      {/* ----------------- BOTTOM METADATA DETAILS ----------------- */}
-      <div className="relative z-10 max-w-[1440px] mx-auto w-full pt-10 sm:pt-14">
-        {/* Desktop Layout: Bottom-Left short line & Bottom-Right stacked meta */}
-        <div className="hidden lg:flex items-end justify-between w-full">
-          {/* Bottom-Left: 40px subtle white line */}
-          <div className="w-10 h-[1px] bg-white/40" />
-
-          {/* Bottom-Right: Stacked Metadata + short line */}
-          <div className="flex flex-col items-end space-y-2">
-            <div className="font-mono text-xs text-white/65 uppercase tracking-widest space-y-1 text-right">
-              <div>LAT: {site.meta.lat}</div>
-              <div>LONG: {site.meta.long}</div>
-              <div>V_ID: {site.meta.vId}</div>
-            </div>
-            <div className="w-8 h-[1px] bg-[var(--violet-400)]" />
+      {/* ----------------- BOTTOM INFORMATION BAR ----------------- */}
+      <div className="relative z-10 max-w-[1400px] mx-auto w-full pt-10 sm:pt-12">
+        <div className="border-t border-white/10 pt-5 flex items-center justify-between text-xs font-mono text-zinc-400">
+          {/* Left: Location */}
+          <div className="flex items-center gap-2">
+            <span className="w-5 h-[1px] bg-zinc-600" />
+            <span className="tracking-wider uppercase">BENGALURU, INDIA</span>
           </div>
-        </div>
 
-        {/* Mobile Layout: Compact bottom metadata */}
-        <div className="lg:hidden flex items-center justify-between text-[11px] font-mono text-white/50 border-t border-white/10 pt-4">
-          <span>{site.meta.lat} · {site.meta.long}</span>
-          <span>V_ID: {site.meta.vId}</span>
+          {/* Center: Mission Tagline */}
+          <div className="hidden md:block tracking-widest text-[11px] uppercase text-zinc-500">
+            BUILD &nbsp;/&nbsp; EXPERIMENT &nbsp;/&nbsp; COLLABORATE &nbsp;/&nbsp; MAKE AN IMPACT
+          </div>
+
+          {/* Right: Section Index */}
+          <div className="flex items-center gap-2">
+            <span className="tracking-wider">[ 01 ]</span>
+            <span className="w-5 h-[1px] bg-zinc-600" />
+          </div>
         </div>
       </div>
     </section>

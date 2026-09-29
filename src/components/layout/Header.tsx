@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { ArrowUpRight } from "lucide-react";
 import { site } from "../../content/site";
 import { useActiveSection } from "../../hooks/useActiveSection";
 import { MobileMenu } from "./MobileMenu";
@@ -12,7 +13,7 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      setIsScrolled(window.scrollY > 30);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -29,68 +30,96 @@ export function Header() {
     }
   };
 
+  const navLabels: Record<string, string> = {
+    home: "Home",
+    about: "About",
+    events: "Events",
+    operatives: "Operatives",
+    secure: "Secure",
+  };
+
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ease-in-out px-4 sm:px-6 lg:px-10 ${
-          isScrolled ? "pt-3" : "pt-4 sm:pt-6"
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 px-6 sm:px-10 lg:px-16 ${
+          isScrolled ? "py-3.5 bg-[#07070A]/85 backdrop-blur-md border-b border-white/5" : "py-5 sm:py-6 bg-transparent"
         }`}
       >
-        <div
-          className={`max-w-[1440px] mx-auto transition-all duration-500 ease-in-out flex items-center justify-between ${
-            isScrolled
-              ? "bg-[var(--ink-950)]/70 backdrop-blur-md border border-[var(--line)] shadow-2xl rounded-full px-5 sm:px-6 py-2.5"
-              : "bg-transparent border border-transparent px-2 py-2"
-          }`}
-        >
+        <div className="max-w-[1400px] mx-auto flex items-center justify-between">
           {/* Left: Brand / Logo */}
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, "home")}
-            aria-label={`${site.brand.name} Home`}
-            className="flex items-center gap-3 group outline-none focus-visible:ring-2 focus-visible:ring-[var(--violet-400)] rounded-full px-2 py-1"
+            aria-label="ENIGMA Home"
+            className="flex items-center gap-2.5 group outline-none"
           >
-            <div className="w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center transition-transform group-hover:scale-105 shadow-sm shadow-purple-950/40">
+            <div className="w-7 h-7 rounded-md overflow-hidden flex items-center justify-center transition-transform group-hover:scale-105">
               <img
                 src={site.brand.logoSrc}
                 alt=""
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
                 aria-hidden="true"
               />
             </div>
-            <span className="font-display font-bold text-base sm:text-lg tracking-tight text-white">
+            <span className="font-display font-bold text-base tracking-wider text-white">
               {site.brand.name}
             </span>
           </a>
 
-          {/* Right: Nav Links (Desktop lg+) */}
+          {/* Center: Nav Links (Desktop) */}
           <nav
             aria-label="Main Navigation"
-            className="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium"
+            className="hidden md:flex items-center gap-7 lg:gap-9 text-sm font-medium"
           >
-            {site.nav.map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                onClick={(e) => handleNavClick(e, item.id)}
-                className="py-1.5 transition-colors duration-200 outline-none focus-visible:ring-2 focus-visible:ring-[var(--violet-400)] rounded-md font-mono text-[13px] tracking-wide text-zinc-400 hover:text-white"
-              >
-                <span>{item.label}</span>
-              </a>
-            ))}
+            {site.nav.map((item) => {
+              const isActive = activeSection === item.id;
+              const label = navLabels[item.id] || item.label;
+
+              return (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={(e) => handleNavClick(e, item.id)}
+                  className={`relative py-1 text-[14px] transition-colors duration-200 outline-none font-sans ${
+                    isActive ? "text-white font-medium" : "text-zinc-400 hover:text-white"
+                  }`}
+                >
+                  <span>{label}</span>
+                  {isActive && (
+                    <span
+                      aria-hidden="true"
+                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#9B6DFF] rounded-full"
+                    />
+                  )}
+                </a>
+              );
+            })}
           </nav>
 
-          {/* Mobile Right: Menu Button (< lg) */}
-          <div className="lg:hidden flex items-center">
+          {/* Right: CTA Button (Desktop) */}
+          <div className="hidden md:flex items-center">
+            <a
+              href="https://chat.whatsapp.com/KUe221OJGsd63Hs5grwUMS"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full border border-white/20 hover:border-[#9B6DFF] hover:text-[#9B6DFF] bg-transparent text-white text-[13px] font-medium transition-all duration-200 active:scale-95"
+            >
+              <span>Join the Collective</span>
+              <ArrowUpRight className="w-3.5 h-3.5 opacity-80" />
+            </a>
+          </div>
+
+          {/* Mobile Right: Menu Toggle */}
+          <div className="md:hidden flex items-center">
             <button
               type="button"
               onClick={() => setIsMenuOpen(true)}
               aria-expanded={isMenuOpen}
               aria-controls="mobile-menu"
               aria-label="Open Navigation Menu"
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[var(--line)] bg-white/5 hover:bg-white/10 active:scale-95 transition-all text-xs font-mono font-medium uppercase tracking-wider text-white outline-none focus-visible:ring-2 focus-visible:ring-[var(--violet-400)]"
+              className="px-4 py-1.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 active:scale-95 transition-all text-xs font-mono font-medium text-white"
             >
-              <span>Menu</span>
+              Menu
             </button>
           </div>
         </div>
