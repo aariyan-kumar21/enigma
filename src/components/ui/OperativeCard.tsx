@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, User, ArrowUpRight } from "lucide-react";
+import { Mail, User } from "lucide-react";
 import type { Operative } from "../../content/types";
 import { Reveal } from "./Reveal";
 
@@ -9,9 +9,8 @@ export interface OperativeCardProps {
   delay?: number;
 }
 
-export function OperativeCard({ operative, index, delay = 0 }: OperativeCardProps) {
+export function OperativeCard({ operative, delay = 0 }: OperativeCardProps) {
   const [imageFailed, setImageFailed] = useState(false);
-  const formattedOpId = `OP_${index + 101}`;
 
   const renderSocialIcon = (platform: string) => {
     switch (platform) {
@@ -51,21 +50,8 @@ export function OperativeCard({ operative, index, delay = 0 }: OperativeCardProp
             ) : (
               <div className="w-full h-full flex flex-col items-center justify-center bg-zinc-900 text-zinc-500">
                 <User className="w-12 h-12 opacity-40 mb-1" />
-                <span className="font-mono text-[10px] uppercase tracking-widest opacity-60">
-                  {formattedOpId}
-                </span>
               </div>
             )}
-
-            {/* Top-Left: OP Tag */}
-            <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-black/70 backdrop-blur-md border border-white/10 text-[10px] font-mono text-zinc-300 tracking-wider">
-              {formattedOpId}
-            </div>
-
-            {/* Top-Right: Arrow Action */}
-            <div className="absolute top-2.5 right-2.5 p-1 rounded bg-black/40 backdrop-blur-sm border border-white/10 text-zinc-400 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all">
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </div>
           </div>
 
           {/* Role Bar: Vertical Purple Indicator + Role */}
