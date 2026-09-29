@@ -39,7 +39,7 @@ export function Hero() {
     <section
       ref={containerRef}
       id={site.nav[0].id}
-      className="relative min-h-[100svh] flex flex-col justify-between overflow-hidden bg-[#07070A] text-[#F5F5F5] pt-28 sm:pt-32 lg:pt-36 pb-8 sm:pb-10 px-6 sm:px-10 lg:px-16 select-none"
+      className="relative min-h-[100svh] flex flex-col justify-center overflow-hidden bg-[#07070A] text-[#F5F5F5] pt-28 sm:pt-32 lg:pt-36 pb-20 sm:pb-24 lg:pb-28 px-6 sm:px-10 lg:px-16 select-none"
     >
       {/* ----------------- SUBTLE AMBIENT BACKGROUND LIGHTING ----------------- */}
       <div
@@ -229,28 +229,6 @@ export function Hero() {
                 </div>
               </div>
             </motion.div>
-          </div>
-        </div>
-      </div>
-
-      {/* ----------------- BOTTOM INFORMATION BAR ----------------- */}
-      <div className="relative z-10 max-w-[1400px] mx-auto w-full pt-10 sm:pt-12">
-        <div className="border-t border-white/10 pt-5 flex items-center justify-between text-xs font-mono text-zinc-400">
-          {/* Left: Location */}
-          <div className="flex items-center gap-2">
-            <span className="w-5 h-[1px] bg-zinc-600" />
-            <span className="tracking-wider uppercase">BENGALURU, INDIA</span>
-          </div>
-
-          {/* Center: Mission Tagline */}
-          <div className="hidden md:block tracking-widest text-[11px] uppercase text-zinc-500">
-            BUILD &nbsp;/&nbsp; EXPERIMENT &nbsp;/&nbsp; COLLABORATE &nbsp;/&nbsp; MAKE AN IMPACT
-          </div>
-
-          {/* Right: Section Index */}
-          <div className="flex items-center gap-2">
-            <span className="tracking-wider">[ 01 ]</span>
-            <span className="w-5 h-[1px] bg-zinc-600" />
           </div>
         </div>
       </div>
