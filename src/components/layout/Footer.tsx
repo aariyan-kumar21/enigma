@@ -1,11 +1,7 @@
-import { ArrowUp } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { site } from "../../content/site";
 
 export function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   const renderSocialIcon = (platform: string) => {
     switch (platform) {
       case "instagram":
@@ -23,7 +19,7 @@ export function Footer() {
       case "whatsapp":
         return (
           <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-            <path d="M20.52 3.48A11.86 11.86 0 0012 .5C6.21.5 1.5 5.21 1.5 11c0 1.95.51 3.87 1.47 5.54L.5 23l6.71-2.1A11.9 11.9 0 0012 22.5c5.79 0 10.5-4.71 10.5-10.5 0-1.98-.52-3.84-1.48-5.52zM12 20.5c-1.36 0-2.69-.34-3.86-.98l-.28-.16-3.99 1.25 1.3-3.86-.18-.31A8.01 8.01 0 014 11c0-4.42 3.58-8 8-8s8 3.58 8 8-3.58 8-8 8z" />
+            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.81.6.26 1.07.42 1.44.54.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31" />
           </svg>
         );
       default:
@@ -32,40 +28,32 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative bg-[var(--ink-950)] text-white pt-24 pb-16 px-6 lg:px-10 border-t border-[var(--line)] overflow-hidden select-none">
-      {/* Huge Background Watermark */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-[0.025] font-display font-extrabold text-[22vw] flex items-center justify-center select-none overflow-hidden leading-none tracking-tighter text-white"
-      >
-        {site.brand.name}
-      </div>
-
-      <div className="relative z-10 max-w-[1440px] mx-auto w-full">
+    <footer id="secure" className="relative bg-[var(--ink-950)] text-white pt-20 pb-12 px-6 lg:px-12 border-t border-[var(--line)] select-none">
+      <div className="max-w-[1380px] mx-auto w-full">
         {/* Main 3-Column Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 mb-20">
-          {/* Column 1: Brand & Socials (Cols 1-5) */}
-          <div className="md:col-span-5 space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-0 pb-16">
+          {/* Column 1: Brand & Tagline & Socials */}
+          <div className="md:col-span-5 md:pr-10 lg:pr-14 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-xl overflow-hidden flex items-center justify-center shadow-lg shadow-purple-950/60 border border-[var(--line)]">
+              <div className="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center">
                 <img
                   src={site.brand.logoSrc}
                   alt=""
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                   aria-hidden="true"
                 />
               </div>
-              <span className="font-display font-bold text-3xl tracking-tight text-white flex items-baseline">
-                {site.brand.name}.
+              <span className="font-display font-black text-2xl sm:text-3xl tracking-tight text-white">
+                ENIGMA
               </span>
             </div>
 
-            <p className="font-mono text-xs uppercase tracking-wider text-[var(--text-faint)] leading-relaxed max-w-sm">
-              {site.footer.tagline}
+            <p className="font-mono text-xs sm:text-[13px] text-zinc-400 uppercase tracking-wide leading-relaxed max-w-sm">
+              STUDENT-LED COLLECTIVE DEDICATED TO TECHNICAL REBELLION AND INNOVATIVE DEPLOYMENT.
             </p>
 
-            {/* Social Buttons Row */}
-            <div className="flex items-center gap-2 pt-2">
+            {/* Social Buttons Row (tightly aligned under paragraph) */}
+            <div className="flex items-center gap-3 pt-1">
               {site.secure.socials.map((social) => (
                 <a
                   key={social.platform}
@@ -73,7 +61,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="w-11 h-11 rounded-full bg-[var(--ink-900)] border border-[var(--line)] flex items-center justify-center text-[var(--text-muted)] hover:bg-[var(--violet-600)] hover:text-white hover:border-[var(--violet-600)] transition-all duration-300 hover:-translate-y-0.5 outline-none focus-visible:ring-2 focus-visible:ring-[var(--violet-400)]"
+                  className="w-11 h-11 rounded-full bg-white/[0.02] border border-white/10 flex items-center justify-center text-zinc-400 hover:text-white hover:border-[var(--violet-500)] hover:bg-[var(--violet-600)] transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-[var(--violet-400)]"
                 >
                   {renderSocialIcon(social.platform)}
                 </a>
@@ -81,82 +69,77 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Navigation Tree (Cols 6-8) */}
-          <div className="md:col-span-3 space-y-6">
-            <span className="text-[10px] font-mono text-[var(--violet-400)] tracking-widest uppercase font-semibold block">
-              Navigation_Tree
+          {/* Column 2: Navigation */}
+          <div className="md:col-span-3 md:px-8 lg:px-12 md:border-l border-white/10 space-y-6">
+            <span className="text-[11px] font-mono text-zinc-400 tracking-widest uppercase font-semibold block">
+              NAVIGATION
             </span>
 
-            <ul className="space-y-3.5">
+            <ul className="space-y-4">
               {site.footer.links.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="font-display font-bold text-lg text-white/75 hover:text-white hover:translate-x-1 inline-block transition-all duration-200 uppercase tracking-tight"
+                    className="font-sans font-bold text-sm tracking-wide text-zinc-400 hover:text-white inline-flex items-center gap-2 transition-colors uppercase"
                   >
-                    {link.label}
+                    <span>{link.label}</span>
                   </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Column 3: Communication Log (Cols 9-12) */}
-          <div className="md:col-span-4 space-y-6">
-            <span className="text-[10px] font-mono text-[var(--violet-400)] tracking-widest uppercase font-semibold block">
-              Communication_Log
+          {/* Column 3: Contact */}
+          <div className="md:col-span-4 md:pl-8 lg:pl-12 md:border-l border-white/10 space-y-6">
+            <span className="text-[11px] font-mono text-zinc-400 tracking-widest uppercase font-semibold block">
+              CONTACT
             </span>
 
-            <ul className="space-y-5 font-mono text-xs uppercase text-[var(--text-muted)]">
-              <li className="flex flex-col gap-1">
-                <span className="text-[var(--text-faint)] text-[10px] tracking-widest">LOCATION</span>
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=12.638143296188357,77.44063386876661"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/80 hover:text-[var(--violet-400)] transition-colors"
-                >
-                  JCVR+27P, Karnataka 562112
-                </a>
-              </li>
-
-              <li className="flex flex-col gap-1">
-                <span className="text-[var(--text-faint)] text-[10px] tracking-widest">UPLINK_EMAIL</span>
+            <ul className="space-y-5 font-mono text-xs sm:text-[13px] text-zinc-300">
+              <li>
                 <a
                   href="mailto:enigmaclub5@gmail.com"
-                  className="text-white/80 hover:text-[var(--violet-400)] transition-colors"
+                  className="flex items-center gap-3.5 text-zinc-300 hover:text-white transition-colors group"
                 >
-                  enigmaclub5@gmail.com
+                  <Mail className="w-4 h-4 text-zinc-400 group-hover:text-[var(--violet-400)] shrink-0" />
+                  <span>enigmaclub5@gmail.com</span>
                 </a>
               </li>
 
-              <li className="flex flex-col gap-1">
-                <span className="text-[var(--text-faint)] text-[10px] tracking-widest">COMMS_LINE</span>
+              <li>
                 <a
                   href="tel:+919696724664"
-                  className="text-white/80 hover:text-[var(--violet-400)] transition-colors"
+                  className="flex items-center gap-3.5 text-zinc-300 hover:text-white transition-colors group"
                 >
-                  +91 96967 24664
+                  <Phone className="w-4 h-4 text-zinc-400 group-hover:text-[var(--violet-400)] shrink-0" />
+                  <span>+91 96967 24664</span>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://maps.app.goo.gl/ayCMZQEgqs1VRjXn9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3.5 text-zinc-300 hover:text-white transition-colors group"
+                >
+                  <MapPin className="w-4 h-4 text-zinc-400 group-hover:text-[var(--violet-400)] shrink-0 mt-0.5" />
+                  <div className="flex flex-col gap-0.5 leading-snug">
+                    <span>JAIN (Deemed-to-be-University)</span>
+                    <span className="text-zinc-400">Faculty of Engineering and Technology (FET)</span>
+                    <span className="text-zinc-400">Bengaluru - Kanakapura Rd, Bengaluru, Karnataka 562112</span>
+                  </div>
                 </a>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Bar: Copyright & Scroll to Top */}
-        <div className="pt-8 border-t border-[var(--line)] flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="font-mono text-[11px] tracking-widest text-[var(--text-faint)] uppercase text-center sm:text-left">
-            {site.footer.copyright}
+        {/* Bottom Bar: Copyright */}
+        <div className="pt-8 border-t border-white/10 flex items-center justify-between font-mono text-xs text-zinc-400 uppercase tracking-widest">
+          <div className="text-center sm:text-left w-full">
+            © 2026 ENIGMA &nbsp;|&nbsp; ALL RIGHTS RESERVED.
           </div>
-
-          <button
-            type="button"
-            onClick={scrollToTop}
-            aria-label="Scroll to top of page"
-            className="w-12 h-12 rounded-full bg-[var(--ink-900)] border border-[var(--line)] hover:bg-[var(--violet-600)] hover:border-[var(--violet-600)] text-white flex items-center justify-center transition-all duration-300 hover:-translate-y-1 active:scale-95 outline-none focus-visible:ring-2 focus-visible:ring-[var(--violet-400)] shadow-lg cursor-pointer"
-          >
-            <ArrowUp className="w-5 h-5" />
-          </button>
         </div>
       </div>
     </footer>

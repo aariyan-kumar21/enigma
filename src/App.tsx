@@ -5,9 +5,7 @@ import { Hero } from "./components/sections/Hero";
 import { About } from "./components/sections/About";
 import { Events } from "./components/sections/Events";
 import { Operatives } from "./components/sections/Operatives";
-import { SecureCon } from "./components/sections/SecureCon";
 import { Footer } from "./components/layout/Footer";
-import { HelpButton } from "./components/layout/HelpButton";
 
 export default function App() {
   useEffect(() => {
@@ -37,27 +35,22 @@ export default function App() {
 
       {/* Main Sections */}
       <main>
-        {/* 1. HOME.EXE (Hero Section) */}
+        {/* 1. HOME (Hero Section) */}
         <Hero />
 
-        {/* 2. ABOUT.LOG (About Section) */}
+        {/* 2. ABOUT (About Section) */}
         <About />
 
-        {/* 3. EVENTS.ARC (Events Carousel Section) */}
+        {/* 3. EVENTS (Events Section) */}
         <Events />
 
-        {/* 4. OPERATIVES.LST (Operatives Section) */}
+        {/* 4. OPERATIVES (Operatives Section) */}
         <Operatives />
-
-        {/* 5. SECURE.CON (Secure Uplink / Contact Section) */}
-        <SecureCon />
       </main>
 
-      {/* Global Footer */}
+      {/* Global Footer with Contact & Navigation */}
       <Footer />
-
-      {/* Floating Support Help Action */}
-      <HelpButton />
     </div>
   );
 }
+

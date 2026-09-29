@@ -237,8 +237,8 @@ export const site: SiteContent = {
       },
       {
         title: "BASE.LOC",
-        value: "JCVR+27P, Karnataka 562112",
-        href: "https://www.google.com/maps/search/?api=1&query=12.638143296188357,77.44063386876661",
+        value: "JAIN (Deemed-to-be-University), Faculty of Engineering and Technology (FET), Bengaluru - Kanakapura Rd, Bengaluru, Karnataka 562112",
+        href: "https://maps.app.goo.gl/ayCMZQEgqs1VRjXn9",
         type: "location",
       },
     ],
@@ -274,7 +274,6 @@ export const site: SiteContent = {
       { label: "ABOUT", href: "#about" },
       { label: "EVENTS", href: "#events" },
       { label: "OPERATIVES", href: "#operatives" },
-      { label: "SECURE", href: "#secure" },
     ],
   },
 };
