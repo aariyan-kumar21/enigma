@@ -76,12 +76,18 @@ export function Header() {
                   href={`#${item.id}`}
                   onClick={(e) => handleNavClick(e, item.id)}
                   aria-current={isActive ? "page" : undefined}
-                  className={`relative flex items-center py-1.5 transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-[var(--violet-400)] rounded-md font-mono text-[13px] tracking-wide ${
+                  className={`relative flex items-center gap-2 py-1.5 transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-[var(--violet-400)] rounded-md font-mono text-[13px] tracking-wide ${
                     isActive
-                      ? "text-white font-semibold"
+                      ? "text-white font-semibold after:absolute after:-bottom-1 after:left-0 after:right-0 after:h-[1px] after:bg-white"
                       : "text-white/60 hover:text-white"
                   }`}
                 >
+                  {isActive && (
+                    <span
+                      aria-hidden="true"
+                      className="w-1.5 h-1.5 rounded-full bg-[var(--violet-500)] shadow-[0_0_8px_var(--violet-500)]"
+                    />
+                  )}
                   <span>{item.label}</span>
                 </a>
               );
