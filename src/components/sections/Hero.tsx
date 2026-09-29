@@ -153,34 +153,21 @@ export function Hero() {
           </div>
 
           {/* ================= RIGHT COLUMN (~45%) ================= */}
-          <div className="lg:col-span-5 flex flex-col justify-center space-y-8 sm:space-y-9 lg:pl-6 xl:pl-10">
-            {/* Mission Section */}
+          <div className="lg:col-span-5 flex flex-col justify-center space-y-10 sm:space-y-12 lg:pl-8 xl:pl-12">
+            {/* Mission Bracketed Stack with Left Vertical Border */}
             <motion.div
               custom={1}
               initial="hidden"
               animate="visible"
               variants={fadeUpVariant}
-              className="space-y-5"
+              className="border-l border-white/15 pl-6 sm:pl-8 space-y-3.5 sm:space-y-4"
             >
-              {/* Small Label */}
-              <div className="font-mono text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#9B6DFF]">
-                [ OUR MISSION ]
+              <div className="font-mono text-base sm:text-lg lg:text-[19px] font-semibold tracking-wider text-zinc-200 select-none">
+                <div>[ IDEAS ]</div>
+                <div>[ PEOPLE ]</div>
+                <div>[ SYSTEMS ]</div>
+                <div className="text-[#9B6DFF]">[ REAL IMPACT ]</div>
               </div>
-
-              {/* Large Stacked Text */}
-              <div className="font-display font-extrabold uppercase text-4xl sm:text-5xl lg:text-[46px] xl:text-[54px] leading-[0.94] tracking-tight space-y-1 select-none text-left">
-                <div className="text-white">IDEAS.</div>
-                <div className="text-white">PEOPLE.</div>
-                <div className="text-white">SYSTEMS.</div>
-                <div className="text-[#9B6DFF]">REAL IMPACT.</div>
-              </div>
-
-              {/* Mission Paragraph */}
-              <p className="text-sm sm:text-base text-zinc-400 leading-relaxed max-w-[430px] font-sans font-normal pt-1">
-                We bring together curious minds, fearless builders, and creative
-                problem-solvers to learn, build, and break new ground in
-                technology.
-              </p>
             </motion.div>
 
             {/* Three Statistics */}
