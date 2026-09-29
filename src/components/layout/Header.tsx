@@ -102,9 +102,9 @@ export function Header() {
               href="https://chat.whatsapp.com/KUe221OJGsd63Hs5grwUMS"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full border border-white/20 hover:border-[#9B6DFF] hover:text-[#9B6DFF] bg-transparent text-white text-[13px] font-medium transition-all duration-200 active:scale-95"
+              className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full border border-white/20 hover:border-[#9B6DFF] hover:text-[#9B6DFF] bg-transparent text-white text-xs font-semibold tracking-wider uppercase transition-all duration-200 active:scale-95"
             >
-              <span>Join the Collective</span>
+              <span>JOIN THE COLLECTIVE</span>
               <ArrowUpRight className="w-3.5 h-3.5 opacity-80" />
             </a>
           </div>
