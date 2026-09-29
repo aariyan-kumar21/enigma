@@ -5,25 +5,30 @@ export function useActiveSection(sectionIds: NavId[], defaultSection: NavId = "h
   const [activeId, setActiveId] = useState<NavId>(defaultSection);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + 200;
-      for (const id of sectionIds) {
-        const element = document.getElementById(id);
-        if (element) {
-          const top = element.offsetTop;
-          const height = element.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveId(id);
-            break;
-          }
+    const observerCallback: IntersectionObserverCallback = (entries) => {
+      // Find the entry that has the highest intersection ratio or is currently in the trigger area
+      const visibleEntries = entries.filter((entry) => entry.isIntersecting);
+      if (visibleEntries.length > 0) {
+        visibleEntries.sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        const bestEntry = visibleEntries[0];
+        const currentId = bestEntry.target.id as NavId;
+        if (currentId && sectionIds.includes(currentId)) {
+          setActiveId(currentId);
         }
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
+    const observer = new IntersectionObserver(observerCallback, {
+      rootMargin: "-10% 0px -40% 0px",
+      threshold: [0, 0.2, 0.4, 0.6, 0.8, 1],
+    });
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
   }, [sectionIds]);
 
   return activeId;

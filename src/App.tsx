@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
 import { site } from "./content/site";
+import { Header } from "./components/layout/Header";
+import { Hero } from "./components/sections/Hero";
+import { About } from "./components/sections/About";
 import { SectionTitle } from "./components/ui/SectionTitle";
 import { Button } from "./components/ui/Button";
-import { Pill } from "./components/ui/Pill";
 import { Reveal } from "./components/ui/Reveal";
 
 export default function App() {
@@ -29,76 +31,14 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[var(--ink-950)] text-white selection:bg-[var(--blue-500)] selection:text-white">
-      {/* 1. HOME.EXE (Dark / Blue-900 gradient) */}
-      <section
-        id={site.nav[0].id}
-        className="min-h-screen relative flex flex-col justify-center px-6 sm:px-12 md:px-20 py-24 bg-gradient-to-b from-[var(--blue-900)] via-[var(--ink-950)] to-[var(--ink-950)] border-b border-white/10 scroll-mt-20"
-      >
-        <div className="max-w-6xl mx-auto w-full space-y-8">
-          <Reveal direction="down">
-            <div className="flex flex-wrap gap-3 items-center">
-              <Pill variant="blue">{site.hero.eyebrow}</Pill>
-              <Pill variant="glass">{site.meta.lat} · {site.meta.long}</Pill>
-              <Pill variant="default">V_ID: {site.meta.vId}</Pill>
-            </div>
-          </Reveal>
+      {/* Global Header */}
+      <Header />
 
-          <Reveal delay={0.1}>
-            <h1 className="font-display text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-tight">
-              <span>{site.hero.headline.plain} </span>
-              <span className="font-accent italic font-normal tracking-normal text-[var(--blue-500)]">
-                {site.hero.headline.accent}
-              </span>
-            </h1>
-          </Reveal>
+      {/* 1. HOME.EXE (Hero Section) */}
+      <Hero />
 
-          <Reveal delay={0.2}>
-            <p className="max-w-2xl text-lg sm:text-xl text-[var(--text-muted-dark)] leading-relaxed">
-              {site.hero.paragraph}
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.3}>
-            <div className="flex flex-wrap gap-4 pt-4">
-              <Button variant="primary" size="lg" href={site.hero.primaryCta.href} showArrow>
-                {site.hero.primaryCta.label}
-              </Button>
-              <Button variant="secondary" size="lg" href={site.hero.secondaryCta.href} showArrow>
-                {site.hero.secondaryCta.label}
-              </Button>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* 2. ABOUT.LOG (Light / Paper) */}
-      <section
-        id={site.nav[1].id}
-        className="min-h-screen flex flex-col justify-center px-6 sm:px-12 md:px-20 py-24 bg-[var(--paper)] text-[var(--ink-950)] border-b border-black/5 scroll-mt-20"
-      >
-        <div className="max-w-6xl mx-auto w-full space-y-12">
-          <Reveal>
-            <SectionTitle
-              eyebrow={site.about.eyebrow}
-              headline={site.about.headline}
-              description={site.about.lead}
-              theme="light"
-              action={{ label: "EXPLORE LOG", href: `#${site.nav[1].id}` }}
-            />
-          </Reveal>
-
-          <Reveal delay={0.15}>
-            <div className="p-8 rounded-[var(--radius-card)] bg-[var(--mist)] border border-black/5">
-              <span className="font-mono text-xs text-neutral-500 uppercase tracking-wider block mb-2">
-                [Token Check: --paper &amp; --mist]
-              </span>
-              <p className="text-neutral-700 leading-relaxed font-sans">
-                {site.about.manifesto}
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      {/* 2. ABOUT.LOG (About Section) */}
+      <About />
 
       {/* 3. MISSIONS.ARC (Dark / Ink-950) */}
       <section
